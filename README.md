@@ -24,7 +24,7 @@ Because some local brewery have their beer menu at one place and customers have 
 Authors
 ======
 [Gabriel Desilets]
-gabdesilets@gmail.com  
+gabdesilets@gmail.com
 I like trains !
 
 [Marc Andre Gignac]
