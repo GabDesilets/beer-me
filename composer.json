@@ -35,7 +35,8 @@
         "braincrafted/bootstrap-bundle": "^2.1",
         "twbs/bootstrap": "3.0.*",
         "jquery/jquery":  "1.11.*",
-        "vlucas/phpdotenv": "^2.1"
+        "vlucas/phpdotenv": "^2.1",
+        "doctrine/doctrine-migrations-bundle": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
