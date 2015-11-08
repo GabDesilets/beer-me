@@ -19,6 +19,10 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 }
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
+
+$dotEnv = new Dotenv\Dotenv(__DIR__ . '/../');
+$dotEnv->load();
+
 Debug::enable();
 
 require_once __DIR__.'/../app/AppKernel.php';

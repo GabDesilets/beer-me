@@ -2,6 +2,7 @@
 
 use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
+use Dotenv\Dotenv;
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 
@@ -15,10 +16,13 @@ $loader->unregister();
 $apcLoader->register(true);
 */
 
+$dotEnv = new Dotenv(__DIR__ . '/../');
+$dotEnv->load();
+
 require_once __DIR__.'/../app/AppKernel.php';
 //require_once __DIR__.'/../app/AppCache.php';
 
-$kernel = new AppKernel('prod', false);
+$kernel = new AppKernel($_SERVER['SYMFONY_ENV'], (bool)$_SERVER['SYMFONY_DEBUG']);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 
