@@ -24,5 +24,6 @@ $mailer = array_merge(
 
 $container->setParameter('mailer_transport', $mailer['scheme']);
 $container->setParameter('mailer_host', $mailer['host']);
+$container->setParameter('mailer_port', $mailer['port']);
 $container->setParameter('mailer_user', $mailer['user']);
 $container->setParameter('mailer_password', $mailer['pass']);
