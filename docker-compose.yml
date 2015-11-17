@@ -1,0 +1,31 @@
+application:
+  build: .
+  volumes:
+    - .:/var/www/html
+
+mailcatcher:
+  image: schickling/mailcatcher
+  ports:
+    - 1080:1080
+
+mysql:
+  image: mysql:5.6
+  env_file:
+    - .env
+
+fpm:
+  build: docker/php-fpm/
+  links:
+    - mysql:db
+    - mailcatcher:mail
+  volumes_from:
+    - application
+
+nginx:
+  build: docker/nginx/
+  ports:
+    - 8080:80
+  links:
+    - fpm:php
+  volumes_from:
+    - application
