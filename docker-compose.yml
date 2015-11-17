@@ -10,11 +10,8 @@ mailcatcher:
 
 mysql:
   image: mysql:5.6
-  environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_DATABASE: beer_me
-    MYSQL_USER: beer_me_user
-    MYSQL_PASSWORD: w2Ke0LT2w2Vg3Bz
+  env_file:
+    - .env
 
 fpm:
   build: docker/php-fpm/
