@@ -1,4 +1,4 @@
-FROM php:5.5-fpm
+FROM php:5.6-fpm
 
 ADD symfony.ini /usr/local/etc/php/conf.d/
 
