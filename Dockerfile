@@ -10,5 +10,9 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 
-VOLUME /var/www
-WORKDIR /var/www
+RUN echo "date.timezone = America/Montreal" >> /usr/local/etc/php/conf.d/symfony.ini
+
+USER 1000
+
+VOLUME /var/www/html
+WORKDIR /var/www/html
