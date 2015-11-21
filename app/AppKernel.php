@@ -19,6 +19,9 @@ class AppKernel extends Kernel
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle(),
+            new SimpleBus\SymfonyBridge\SimpleBusEventBusBundle(),
+            new SimpleBus\SymfonyBridge\DoctrineOrmBridgeBundle(),
             new AppBundle\AppBundle(),
         );
 
