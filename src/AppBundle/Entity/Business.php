@@ -45,10 +45,21 @@ class Business
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="administrator_user_id", referencedColumnName="id")
      */
     private $administratorUser;
+
+    public function __construct($name, $address, $phone, $administratorEmail)
+    {
+        $this->name = $name;
+        $this->address = $address;
+        $this->phone = $phone;
+
+        $this->administratorUser = new User();
+        $this->administratorUser->setEmail($administratorEmail);
+        $this->administratorUser->setPlainPassword('123456'); // TODO Change for random
+    }
 
     /**
      * Get id
@@ -140,16 +151,6 @@ class Business
     public function getAdministratorUser()
     {
         return $this->administratorUser;
-    }
-
-    /**
-     * Set administrator user
-     *
-     * @param User $administratorUser
-     */
-    public function setAdministratorUser($administratorUser)
-    {
-        $this->administratorUser = $administratorUser;
     }
 }
 

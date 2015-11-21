@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Business edit</h1>
+
+    {{ form_errors(form) }}
+
+    {{ form_start(form) }}
+        {{ form_rest(form) }}
+        <input type="Submit" value="Update" />
+    {{ form_end(form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin.business.list') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('admin.business.delete', {'id': entity.id}) }}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+{% endblock %}
