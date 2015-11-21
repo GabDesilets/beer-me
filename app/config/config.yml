@@ -89,3 +89,7 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+fos_user:
+    db_driver: orm
+    firewall_name: main # To be replaced by the "business" firewall
+    user_class: AppBundle\Entity\User
