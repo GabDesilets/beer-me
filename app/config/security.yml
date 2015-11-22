@@ -25,10 +25,20 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        admin_login:
+            pattern: ^/admin/login$
+            security: false
+
         admin:
             pattern: ^/admin/
             provider: administrator_users
-            http_basic: ~
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/login_check
+                default_target_path: /admin
+            logout:
+                path: /admin/logout
+                target: /admin
 
         main:
             anonymous: ~
