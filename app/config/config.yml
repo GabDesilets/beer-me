@@ -36,6 +36,10 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - BraincraftedBootstrapBundle:Form:bootstrap.html.twig
+
 
 # Assetic Configuration
 assetic:
@@ -54,6 +58,19 @@ assetic:
             node_paths: %node_modules_path%
             apply_to: "\.less$"
         cssrewrite: ~
+    assets:
+        adminlte_css:
+            inputs:
+                - "%kernel.root_dir%/../vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css"
+                - "%kernel.root_dir%/../vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css"
+            output: css/adminlte.css
+        adminlte_js:
+            inputs:
+                - "%kernel.root_dir%/../vendor/almasaeed2010/adminlte/dist/js/app.min.js"
+                - "%kernel.root_dir%/../vendor/almasaeed2010/adminlte/dist/js/demo.js"
+                - "%kernel.root_dir%/../vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"
+                - "%kernel.root_dir%/../vendor/almasaeed2010/adminlte/plugins/fastclick/fastclick.js"
+            output: js/adminlte.js
 
 braincrafted_bootstrap:
     less_filter: less

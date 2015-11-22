@@ -16,6 +16,6 @@ class HomeController extends Controller
      */
     public function homeAction()
     {
-        return new Response('ok');
+        return $this->render(':admin:layout.html.twig');
     }
 }

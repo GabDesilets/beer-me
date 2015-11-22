@@ -1,20 +1,33 @@
-{% extends '::base.html.twig' %}
+{% extends ':admin:layout.html.twig' %}
 
-{% block body -%}
-    <h1>Business creation</h1>
+{% block content_header -%}
+    <h3>Business creation</h3>
+{% endblock %}
 
-    {{ form_errors(form) }}
+{% block content %}
+    <div class="box">
+        <div class="box-body">
+            <div class="row">
+                {{ form_errors(form) }}
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ form_start(form) }}
+                    {{ form_rest(form) }}
+                    <input type="Submit" value="Create" class="btn btn-primary"/>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="row">
+                <ul class="record_actions">
+                    <li>
+                        <a href="{{ path('admin.business.list') }}">
+                            Back to the list
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    {{ form_start(form) }}
-    {{ form_rest(form) }}
-    <input type="Submit" value="Create" />
-    {{ form_end(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin.business.list') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}
