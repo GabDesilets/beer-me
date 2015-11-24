@@ -3,6 +3,7 @@
 namespace AppBundle\Command;
 
 use AppBundle\Entity\Business;
+use AppBundle\Event\BusinessUpdatedEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use SimpleBus\Message\Recorder\RecordsMessages;
 

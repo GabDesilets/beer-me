@@ -1,22 +1,6 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdminLTE 2 | Blank Page</title>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+{% extends ':admin:base.html.twig' %}
 
-        {% block stylesheets -%}
-            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
-            <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}" />
-
-            <!-- Font Awesome -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-            <!-- Ionicons -->
-            <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        {%- endblock %}
-    </head>
-    <body class="hold-transition skin-blue sidebar-mini">
+{% block body %}
     <!-- Site wrapper -->
     <div class="wrapper">
 
@@ -66,14 +50,12 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                {% block content_header %}
-                {% endblock %}
+                {% block content_header %}{% endblock %}
             </section>
 
             <!-- Main content -->
             <section class="content">
-                {% block content %}
-                {% endblock %}
+                {% block content %}{% endblock %}
             </section>
             <!-- /.content -->
         </div>
@@ -88,11 +70,4 @@
         </footer>
     </div>
     <!-- ./wrapper -->
-
-    {% block javascripts -%}
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
-        <script src="{{ asset('js/adminlte.js') }}"></script>
-    {%- endblock %}
-    </body>
-</html>
+{% endblock %}
