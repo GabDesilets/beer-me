@@ -1,0 +1,13 @@
+AppBundle\Entity\User:
+  business_admin_{1..100}:
+    username: <name()>
+    email: <email()>
+    enabled: <boolean()>
+    plainPassword: <lexify()>
+
+AppBundle\Entity\Business:
+  business_{1..100}:
+    name: <company()>
+    address: <address()>
+    phone: <numerify('###############')>
+    administratorUser: @business_admin_<current()>

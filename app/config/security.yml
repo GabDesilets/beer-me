@@ -2,16 +2,43 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 13
+
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+
+        # Generate passwords with `php -r "echo password_hash('password', PASSWORD_BCRYPT, ['cost' => 13]) . PHP_EOL;"`
+        administrator_users:
+            memory:
+                users:
+                    admin:
+                        password: $2y$13$7IwwWXfJXG1O5MOf1621f.TrQoqZWFSi9we8gkBjROYwAbv1y1Lb.
+                        roles: 'ROLE_ADMIN'
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        admin_login:
+            pattern: ^/admin/login$
+            security: false
+
+        admin:
+            pattern: ^/admin/
+            provider: administrator_users
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/login_check
+                default_target_path: /admin
+            logout:
+                path: /admin/logout
+                target: /admin
 
         main:
             anonymous: ~
