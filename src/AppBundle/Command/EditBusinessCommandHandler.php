@@ -4,6 +4,7 @@ namespace AppBundle\Command;
 
 use AppBundle\Entity\Business;
 use AppBundle\Event\BusinessUpdatedEvent;
+use AppBundle\Exception\BusinessNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use SimpleBus\Message\Recorder\RecordsMessages;
 
@@ -24,6 +25,10 @@ class EditBusinessCommandHandler
     public function handle(EditBusinessCommand $command)
     {
         $business = $this->em->getRepository('AppBundle:Business')->find($command->getId());
+
+        if (null === $business) {
+            throw new BusinessNotFoundException();
+        }
 
         $business->setName($command->getName());
         $business->setPhone($command->getPhone());

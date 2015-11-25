@@ -142,9 +142,8 @@ class BusinessController extends Controller
      */
     private function createEditBusinessCommand(Business $entity)
     {
-        $command = new EditBusinessCommand();
+        $command = new EditBusinessCommand($entity->getId());
 
-        $command->setId($entity->getId());
         $command->setName($entity->getName());
         $command->setAddress($entity->getAddress());
         $command->setPhone($entity->getPhone());

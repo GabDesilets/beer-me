@@ -6,6 +6,11 @@ class EditBusinessCommand extends CreateBusinessCommand
 {
     private $id;
 
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
+
     /**
      * @return mixed
      */
@@ -13,14 +18,4 @@ class EditBusinessCommand extends CreateBusinessCommand
     {
         return $this->id;
     }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-
 }
