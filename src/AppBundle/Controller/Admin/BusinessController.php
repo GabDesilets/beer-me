@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Admin;
 
 use AppBundle\Command\CreateBusinessCommand;
+use AppBundle\Command\DeleteBusinessCommand;
 use AppBundle\Command\EditBusinessCommand;
 use AppBundle\Event\BusinessCreatedEvent;
 use Symfony\Component\HttpFoundation\Request;
@@ -131,14 +132,7 @@ class BusinessController extends Controller
      */
     public function deleteAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('AppBundle:Business')->find($id);
-
-        if ($entity) {
-            $em->remove($entity);
-            $em->flush();
-        }
-
+        $this->get('command_bus')->handle(new DeleteBusinessCommand($id));
         return $this->redirectToRoute('admin.business.list');
     }
 
