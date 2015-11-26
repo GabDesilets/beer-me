@@ -14,9 +14,9 @@ class DeleteBusinessCommandHandler
     /** @var RecordsMessages */
     private $recorder;
 
-    public function __construct(RecordsMessages $recorder, EntityManagerInterface $entityManager)
+    public function __construct(RecordsMessages $recorder, EntityManagerInterface $em)
     {
-        $this->em = $entityManager;
+        $this->em = $em;
         $this->recorder = $recorder;
     }
 
