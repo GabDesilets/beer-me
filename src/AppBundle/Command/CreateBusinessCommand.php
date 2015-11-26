@@ -2,11 +2,33 @@
 
 namespace AppBundle\Command;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Validator\Constraints as AppBundleAssert;
+
+/**
+ * @AppBundleAssert\UniqueBusiness
+ */
 class CreateBusinessCommand
 {
+
+    /**
+     * @Assert\NotBlank()
+     */
     private $name;
+
+    /**
+     * @Assert\NotBlank()
+     */
     private $address;
+
+    /**
+     * @Assert\NotBlank()
+     */
     private $phone;
+
+    /**
+     * @Assert\NotBlank()
+     */
     private $administratorEmail;
 
     /**

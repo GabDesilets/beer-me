@@ -23,6 +23,11 @@
             <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessCommand" />
         </service>
 
+        <service id="app.validator.unique_business" class="AppBundle\Validator\Constraints\UniqueBusinessValidator">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="validator.constraint_validator" alias="app.unique_business" />
+        </service>
+
         <service id="app.event_promises" class="AppBundle\Event\Promise\PromisesEventHandlerMiddleware">
             <tag name="event_bus_middleware" />
         </service>
