@@ -4,8 +4,16 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @SkippedTest
+ */
 class BusinessControllerTest extends WebTestCase
 {
+    public function testTemp()
+    {
+
+    }
+
     /*
     public function testCompleteScenario()
     {
