@@ -21,19 +21,33 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class BusinessController extends Controller
 {
+    const RESULTS_PER_PAGE = 20;
+
     /**
      * Lists all Business entities.
      *
      * @Route("/", name="admin.business.list")
      * @Method("GET")
+     *
+     * @param Request $request
+     * @return Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $filterValue = $request->query->get('filterValue', '');
 
-        $entities = $em->getRepository('AppBundle:Business')->findAll();
+        $pagination = $this->get('knp_paginator')->paginate(
+            $this->getDoctrine()->getRepository('AppBundle:Business')->findAllQuery(),
+            $request->query->getInt('page', 1),
+            self::RESULTS_PER_PAGE
+        );
 
-        return $this->render(':admin/business:index.html.twig', ['entities' => $entities]);
+        return $this->render(
+            ':admin/business:index.html.twig',
+            [
+                'pagination' => $pagination,
+                'filterValue' => $filterValue
+            ]);
     }
 
     /**
