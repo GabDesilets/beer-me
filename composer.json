@@ -42,7 +42,8 @@
         "simple-bus/symfony-bridge": "^4.1",
         "simple-bus/doctrine-orm-bridge": "^4.0",
         "almasaeed2010/adminlte": "^2.3",
-        "knplabs/knp-paginator-bundle": "^2.5"
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "ircmaxell/random-lib": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
