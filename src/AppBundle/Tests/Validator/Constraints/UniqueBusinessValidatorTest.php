@@ -63,11 +63,12 @@ class UniqueBusinessValidatorTest extends \PHPUnit_Framework_TestCase
 
         $this->business->getAdministratorUser()->willReturn($this->user->reveal());
 
-        $this->value = new EditBusinessCommand(1);
-        $this->value->setName('name');
-        $this->value->setAddress('address');
-        $this->value->setPhone('phone');
-        $this->value->setAdministratorEmail('email');
+        $this->value = new EditBusinessCommand();
+        $this->value->id = 1;
+        $this->value->name = 'name';
+        $this->value->address = 'address';
+        $this->value->phone = 'phone';
+        $this->value->administratorEmail = 'email';
 
         /** @noinspection PhpParamsInspection */
         $this->validator = new UniqueBusinessValidator($em->reveal());
@@ -79,10 +80,10 @@ class UniqueBusinessValidatorTest extends \PHPUnit_Framework_TestCase
     public function testValid()
     {
         $this->businessRepository->find(1)->willReturn($this->business->reveal());
-        $this->businessRepository->findBy(['name' => $this->value->getName()])->shouldBeCalled();
-        $this->businessRepository->findBy(['address' => $this->value->getAddress()])->shouldBeCalled();
-        $this->businessRepository->findBy(['phone' => $this->value->getPhone()])->shouldBeCalled();
-        $this->userRepository->findBy(['email' => $this->value->getAdministratorEmail()])->shouldBeCalled();
+        $this->businessRepository->findBy(['name' => $this->value->name])->shouldBeCalled();
+        $this->businessRepository->findBy(['address' => $this->value->address])->shouldBeCalled();
+        $this->businessRepository->findBy(['phone' => $this->value->phone])->shouldBeCalled();
+        $this->userRepository->findBy(['email' => $this->value->administratorEmail])->shouldBeCalled();
 
         $this->context->buildViolation(Argument::any())->shouldNotBeCalled();
 
@@ -96,19 +97,19 @@ class UniqueBusinessValidatorTest extends \PHPUnit_Framework_TestCase
 
         $this->businessRepository->find(1)->willReturn($this->business->reveal());
 
-        $this->businessRepository->findBy(['name' => $this->value->getName()])
+        $this->businessRepository->findBy(['name' => $this->value->name])
             ->willReturn([$this->business->reveal()])
             ->shouldBeCalled();
 
-        $this->businessRepository->findBy(['address' => $this->value->getAddress()])
+        $this->businessRepository->findBy(['address' => $this->value->address])
             ->willReturn([$this->business->reveal()])
             ->shouldBeCalled();
 
-        $this->businessRepository->findBy(['phone' => $this->value->getPhone()])
+        $this->businessRepository->findBy(['phone' => $this->value->phone])
             ->willReturn([$this->business->reveal()])
             ->shouldBeCalled();
 
-        $this->userRepository->findBy(['email' => $this->value->getAdministratorEmail()])
+        $this->userRepository->findBy(['email' => $this->value->administratorEmail])
             ->willReturn([$this->user->reveal()])
             ->shouldBeCalled();
 
@@ -134,19 +135,19 @@ class UniqueBusinessValidatorTest extends \PHPUnit_Framework_TestCase
 
         $this->businessRepository->find(1)->willReturn($this->business->reveal());
 
-        $this->businessRepository->findBy(['name' => $this->value->getName()])
+        $this->businessRepository->findBy(['name' => $this->value->name])
             ->willReturn([$otherBusiness->reveal()])
             ->shouldBeCalled();
 
-        $this->businessRepository->findBy(['address' => $this->value->getAddress()])
+        $this->businessRepository->findBy(['address' => $this->value->address])
             ->willReturn([$otherBusiness->reveal()])
             ->shouldBeCalled();
 
-        $this->businessRepository->findBy(['phone' => $this->value->getPhone()])
+        $this->businessRepository->findBy(['phone' => $this->value->phone])
             ->willReturn([$otherBusiness->reveal()])
             ->shouldBeCalled();
 
-        $this->userRepository->findBy(['email' => $this->value->getAdministratorEmail()])
+        $this->userRepository->findBy(['email' => $this->value->administratorEmail])
             ->willReturn([$otherUser->reveal()])
             ->shouldBeCalled();
 
@@ -159,10 +160,10 @@ class UniqueBusinessValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $value = new CreateBusinessCommand();
 
-        $this->businessRepository->findBy(['name' => $value->getName()])->shouldBeCalled();
-        $this->businessRepository->findBy(['address' => $value->getAddress()])->shouldBeCalled();
-        $this->businessRepository->findBy(['phone' => $value->getPhone()])->shouldBeCalled();
-        $this->userRepository->findBy(['email' => $value->getAdministratorEmail()])->shouldBeCalled();
+        $this->businessRepository->findBy(['name' => $value->name])->shouldBeCalled();
+        $this->businessRepository->findBy(['address' => $value->address])->shouldBeCalled();
+        $this->businessRepository->findBy(['phone' => $value->phone])->shouldBeCalled();
+        $this->userRepository->findBy(['email' => $value->administratorEmail])->shouldBeCalled();
 
         $this->businessRepository->find(Argument::any())->shouldNotBeCalled();
 

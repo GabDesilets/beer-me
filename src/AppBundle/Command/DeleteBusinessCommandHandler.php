@@ -22,7 +22,7 @@ class DeleteBusinessCommandHandler
 
     public function handle(DeleteBusinessCommand $command)
     {
-        $entity = $this->em->getRepository('AppBundle:Business')->find($command->getId());
+        $entity = $this->em->getRepository('AppBundle:Business')->find($command->id);
 
         if ($entity) {
             $this->em->remove($entity);

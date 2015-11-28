@@ -30,10 +30,10 @@ class CreateBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
         $this->entityManager = $this->prophesize(EntityManagerInterface::class);
 
         $this->command = new CreateBusinessCommand();
-        $this->command->setPhone('phone');
-        $this->command->setName('name');
-        $this->command->setAddress('address');
-        $this->command->setAdministratorEmail('email');
+        $this->command->phone = 'phone';
+        $this->command->name = 'name';
+        $this->command->address = 'address';
+        $this->command->administratorEmail = 'email';
 
         /** @noinspection PhpParamsInspection */
         $this->handler = new CreateBusinessCommandHandler(
@@ -46,10 +46,10 @@ class CreateBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
     {
         // Check that the business match expected values
         $compareBusiness = function(Business $compareBusiness) {
-            return $this->command->getAdministratorEmail() == $compareBusiness->getAdministratorUser()->getEmail()
-                && $this->command->getName() == $compareBusiness->getName()
-                && $this->command->getAddress() == $compareBusiness->getAddress()
-                && $this->command->getPhone() == $compareBusiness->getPhone()
+            return $this->command->administratorEmail == $compareBusiness->getAdministratorUser()->getEmail()
+                && $this->command->name == $compareBusiness->getName()
+                && $this->command->address == $compareBusiness->getAddress()
+                && $this->command->phone == $compareBusiness->getPhone()
             ;
         };
 

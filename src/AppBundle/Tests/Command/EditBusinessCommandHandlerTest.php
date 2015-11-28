@@ -35,11 +35,12 @@ class EditBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
         $this->entityManager = $this->prophesize(EntityManagerInterface::class);
         $this->businessRepository = $this->prophesize(ObjectRepository::class);
 
-        $this->command = new EditBusinessCommand(1);
-        $this->command->setPhone('phone');
-        $this->command->setName('name');
-        $this->command->setAddress('address');
-        $this->command->setAdministratorEmail('email');
+        $this->command = new EditBusinessCommand();
+        $this->command->id = 1;
+        $this->command->phone = 'phone';
+        $this->command->name = 'name';
+        $this->command->address = 'address';
+        $this->command->administratorEmail = 'email';
 
         /** @noinspection PhpParamsInspection */
         $this->handler = new EditBusinessCommandHandler(
@@ -57,17 +58,17 @@ class EditBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
             ->willReturn($this->businessRepository)
             ->shouldBeCalled();
 
-        $this->businessRepository->find($this->command->getId())->willReturn($business)->shouldBeCalled();
+        $this->businessRepository->find($this->command->id)->willReturn($business)->shouldBeCalled();
 
         $this->entityManager->flush()->shouldBeCalled();
 
         $this->recorder->record(Argument::that(function(BusinessUpdatedEvent $event) use ($business) {
             $compareBusiness = $event->getEntity();
             return $compareBusiness === $business
-                && $this->command->getAdministratorEmail() == $compareBusiness->getAdministratorUser()->getEmail()
-                && $this->command->getName() == $compareBusiness->getName()
-                && $this->command->getAddress() == $compareBusiness->getAddress()
-                && $this->command->getPhone() == $compareBusiness->getPhone()
+                && $this->command->administratorEmail == $compareBusiness->getAdministratorUser()->getEmail()
+                && $this->command->name == $compareBusiness->getName()
+                && $this->command->address == $compareBusiness->getAddress()
+                && $this->command->phone == $compareBusiness->getPhone()
             ;
         }))->shouldBeCalled();
 
@@ -81,7 +82,7 @@ class EditBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
             ->willReturn($this->businessRepository)
             ->shouldBeCalled();
 
-        $this->businessRepository->find($this->command->getId())->willReturn(null)->shouldBeCalled();
+        $this->businessRepository->find($this->command->id)->willReturn(null)->shouldBeCalled();
 
         $this->setExpectedException(BusinessNotFoundException::class);
 

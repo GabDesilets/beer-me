@@ -2,20 +2,12 @@
 
 namespace AppBundle\Command;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class EditBusinessCommand extends CreateBusinessCommand
 {
-    private $id;
-
-    public function __construct($id)
-    {
-        $this->id = $id;
-    }
-
     /**
-     * @return mixed
+     * @Assert\Type(type="integer")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    public $id;
 }

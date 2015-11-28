@@ -24,18 +24,18 @@ class EditBusinessCommandHandler
 
     public function handle(EditBusinessCommand $command)
     {
-        $business = $this->em->getRepository('AppBundle:Business')->find($command->getId());
+        $business = $this->em->getRepository('AppBundle:Business')->find($command->id);
 
         if (null === $business) {
             throw new BusinessNotFoundException();
         }
 
-        $business->setName($command->getName());
-        $business->setPhone($command->getPhone());
-        $business->setAddress($command->getAddress());
+        $business->setName($command->name);
+        $business->setPhone($command->phone);
+        $business->setAddress($command->address);
 
         $administrator = $business->getAdministratorUser();
-        $administrator->setEmail($command->getAdministratorEmail());
+        $administrator->setEmail($command->administratorEmail);
 
         $this->em->flush();
 

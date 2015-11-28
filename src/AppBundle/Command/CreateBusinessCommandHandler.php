@@ -24,10 +24,10 @@ class CreateBusinessCommandHandler
     public function handle(CreateBusinessCommand $command)
     {
         $business = new Business(
-            $command->getName(),
-            $command->getAddress(),
-            $command->getPhone(),
-            $command->getAdministratorEmail()
+            $command->name,
+            $command->address,
+            $command->phone,
+            $command->administratorEmail
         );
 
         $this->em->persist($business);

@@ -32,7 +32,7 @@ class UniqueBusinessValidator extends ConstraintValidator
     {
         // Get the id of the current business to exclude from the comparison
         $currentBusinessId = $value instanceof EditBusinessCommand
-            ? $value->getId()
+            ? $value->id
             : null;
 
         // Get the id of the current administrator user to exclude from the comparison
@@ -41,25 +41,25 @@ class UniqueBusinessValidator extends ConstraintValidator
             : null;
 
         if ($this->context instanceof ExecutionContextInterface) {
-            if ($this->businessExists('name', $value->getName(), $currentBusinessId)) {
+            if ($this->businessExists('name', $value->name, $currentBusinessId)) {
                 $this->context->buildViolation('Not unique')
                     ->atPath('name')
                     ->addViolation();
             }
 
-            if ($this->businessExists('address', $value->getAddress(), $currentBusinessId)) {
+            if ($this->businessExists('address', $value->address, $currentBusinessId)) {
                 $this->context->buildViolation('Not unique')
                     ->atPath('address')
                     ->addViolation();
             }
 
-            if ($this->businessExists('phone', $value->getPhone(), $currentBusinessId)) {
+            if ($this->businessExists('phone', $value->phone, $currentBusinessId)) {
                 $this->context->buildViolation('Not unique')
                     ->atPath('phone')
                     ->addViolation();
             }
 
-            if ($this->userExists('email', $value->getAdministratorEmail(), $currentUserId)) {
+            if ($this->userExists('email', $value->administratorEmail, $currentUserId)) {
                 $this->context->buildViolation('Not unique')
                     ->atPath('administrator_email')
                     ->addViolation();

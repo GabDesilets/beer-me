@@ -146,7 +146,11 @@ class BusinessController extends Controller
      */
     public function deleteAction($id)
     {
-        $this->get('command_bus')->handle(new DeleteBusinessCommand($id));
+        $command = new DeleteBusinessCommand();
+        $command->id = $id;
+
+        $this->get('command_bus')->handle($command);
+
         return $this->redirectToRoute('admin.business.list');
     }
 
@@ -156,12 +160,14 @@ class BusinessController extends Controller
      */
     private function createEditBusinessCommand(Business $entity)
     {
-        $command = new EditBusinessCommand($entity->getId());
+        $command = new EditBusinessCommand();
 
-        $command->setName($entity->getName());
-        $command->setAddress($entity->getAddress());
-        $command->setPhone($entity->getPhone());
-        $command->setAdministratorEmail($entity->getAdministratorUser()->getEmail());
+        $command->id = $entity->getId();
+        $command->name = $entity->getName();
+        $command->address = $entity->getAddress();
+        $command->phone = $entity->getPhone();
+        $command->administratorEmail = $entity->getAdministratorUser()->getEmail();
+
         return $command;
     }
 }
