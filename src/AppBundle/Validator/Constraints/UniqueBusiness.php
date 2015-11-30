@@ -5,6 +5,8 @@ namespace AppBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 
 /**
+ * Validate that the business has unique name, phone, address and administrator email
+ *
  * @Annotation
  */
 class UniqueBusiness extends Constraint

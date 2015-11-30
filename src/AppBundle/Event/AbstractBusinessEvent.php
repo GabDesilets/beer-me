@@ -4,21 +4,28 @@ namespace AppBundle\Event;
 
 use AppBundle\Entity\Business;
 
+/**
+ * Represent an event on a business Entity
+ *
+ * @package AppBundle\Event
+ */
 abstract class AbstractBusinessEvent
 {
     /** @var Business */
-    private $entity;
+    private $business;
 
-    public function __construct($entity)
+    public function __construct($business)
     {
-        $this->entity = $entity;
+        $this->business = $business;
     }
 
     /**
+     * Get the business
+     *
      * @return Business
      */
-    public function getEntity()
+    public function getBusiness()
     {
-        return $this->entity;
+        return $this->business;
     }
 }

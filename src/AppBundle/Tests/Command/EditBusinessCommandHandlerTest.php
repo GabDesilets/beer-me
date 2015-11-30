@@ -63,7 +63,7 @@ class EditBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
         $this->entityManager->flush()->shouldBeCalled();
 
         $this->recorder->record(Argument::that(function(BusinessUpdatedEvent $event) use ($business) {
-            $compareBusiness = $event->getEntity();
+            $compareBusiness = $event->getBusiness();
             return $compareBusiness === $business
                 && $this->command->administratorEmail == $compareBusiness->getAdministratorUser()->getEmail()
                 && $this->command->name == $compareBusiness->getName()

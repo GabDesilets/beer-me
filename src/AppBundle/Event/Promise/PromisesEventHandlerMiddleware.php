@@ -4,24 +4,42 @@ namespace AppBundle\Event\Promise;
 
 use SimpleBus\Message\Bus\Middleware\MessageBusMiddleware;
 
+/**
+ * Event handler for an easy access to the return value of an event
+ *
+ * @package AppBundle\Event\Promise
+ */
 class PromisesEventHandlerMiddleware implements MessageBusMiddleware
 {
     /** @var EventPromise[] */
     private $promises = [];
 
+    /**
+     * Create a promise from the specified event handler
+     *
+     * Only the first instance of the event will be handled
+     *
+     * @param callable $handler
+     * @return EventPromise
+     */
     public function delegate(callable $handler)
     {
         $promise = new EventPromise($this, $handler);
-
         $this->promises[] = $promise;
 
         return $promise;
     }
 
+    /**
+     * Remove the promise from the list of waiting handlers
+     *
+     * @param EventPromise $promise
+     */
     public function remove(EventPromise $promise)
     {
         $index = array_search($promise, $this->promises, true);
 
+        // If the promise is not found, there is nothing to do.  Do not raise an error
         if ($index !== false) {
             unset($this->promises[$index]);
         }

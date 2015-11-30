@@ -8,6 +8,11 @@ use AppBundle\Exception\BusinessNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use SimpleBus\Message\Recorder\RecordsMessages;
 
+/**
+ * Handler for the business edition command
+ *
+ * This handler edit an existing business and raise a BusinessUpdatedEvent
+ */
 class EditBusinessCommandHandler
 {
     /** @var EntityManagerInterface */
@@ -16,16 +21,29 @@ class EditBusinessCommandHandler
     /** @var RecordsMessages */
     private $recorder;
 
+    /**
+     * EditBusinessCommandHandler constructor.
+     *
+     * @param RecordsMessages $recorder
+     * @param EntityManagerInterface $em
+     */
     public function __construct(RecordsMessages $recorder, EntityManagerInterface $em)
     {
         $this->em = $em;
         $this->recorder = $recorder;
     }
 
+    /**
+     * Handle the command
+     *
+     * @param EditBusinessCommand $command
+     * @throws BusinessNotFoundException
+     */
     public function handle(EditBusinessCommand $command)
     {
         $business = $this->em->getRepository('AppBundle:Business')->find($command->id);
 
+        // If we try to edit an non-existing business, we must throw an exception to inform the user
         if (null === $business) {
             throw new BusinessNotFoundException();
         }

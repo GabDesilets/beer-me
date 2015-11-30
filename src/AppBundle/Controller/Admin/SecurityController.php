@@ -6,11 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
+ * Administration controller controller
+ *
  * @Route("/admin")
  */
 class SecurityController extends Controller
 {
     /**
+     * Display the administration login form
+     *
      * @Route("/login", name="admin.login")
      */
     public function loginAction()

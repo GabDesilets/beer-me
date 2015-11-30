@@ -8,6 +8,11 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
+/**
+ * Apply the business uniqueness validation
+ *
+ * @package AppBundle\Validator\Constraints
+ */
 class UniqueBusinessValidator extends ConstraintValidator
 {
     /** @var EntityManagerInterface */
@@ -40,6 +45,7 @@ class UniqueBusinessValidator extends ConstraintValidator
             ? $this->em->getRepository('AppBundle:Business')->find($currentBusinessId)->getAdministratorUser()->getId()
             : null;
 
+        // Only support the new validation interface
         if ($this->context instanceof ExecutionContextInterface) {
             if ($this->businessExists('name', $value->name, $currentBusinessId)) {
                 $this->context->buildViolation('Not unique')
@@ -67,6 +73,14 @@ class UniqueBusinessValidator extends ConstraintValidator
         }
     }
 
+    /**
+     * Check if another business is found with the same value for the specified field
+     *
+     * @param string $field The entity field
+     * @param string $value The value to compare
+     * @param integer|null $compareId The id of a business to ignore.  Null if no business should be ignored
+     * @return bool
+     */
     private function businessExists($field, $value, $compareId)
     {
         $businesses = $this->em->getRepository('AppBundle:Business')->findBy([$field => $value]);
@@ -75,6 +89,14 @@ class UniqueBusinessValidator extends ConstraintValidator
         return $business && $business->getId() != $compareId;
     }
 
+    /**
+     * Check if another user is found with the same value for the specified field
+     *
+     * @param string $field The entity field
+     * @param string $value The value to compare
+     * @param integer|null $compareId The id of a user to ignore.  Null if no user should be ignored
+     * @return bool
+     */
     private function userExists($field, $value, $compareId)
     {
         $users = $this->em->getRepository('AppBundle:User')->findBy([$field => $value]);

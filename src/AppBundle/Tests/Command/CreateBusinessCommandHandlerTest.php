@@ -57,7 +57,7 @@ class CreateBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
         $this->entityManager->flush()->shouldBeCalled();
 
         $this->recorder->record(Argument::that(function(BusinessCreatedEvent $event) use ($compareBusiness) {
-            return $compareBusiness($event->getEntity());
+            return $compareBusiness($event->getBusiness());
         }))->shouldBeCalled();
 
 
