@@ -45,7 +45,7 @@ class CreateBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
     public function testSave()
     {
         // Check that the business match expected values
-        $compareBusiness = function(Business $compareBusiness) {
+        $compareBusiness = function (Business $compareBusiness) {
             return $this->command->administratorEmail == $compareBusiness->getAdministratorUser()->getEmail()
                 && $this->command->name == $compareBusiness->getName()
                 && $this->command->address == $compareBusiness->getAddress()
@@ -56,7 +56,7 @@ class CreateBusinessCommandHandlerTest extends \PHPUnit_Framework_TestCase
         $this->entityManager->persist(Argument::that($compareBusiness))->shouldBeCalled();
         $this->entityManager->flush()->shouldBeCalled();
 
-        $this->recorder->record(Argument::that(function(BusinessCreatedEvent $event) use ($compareBusiness) {
+        $this->recorder->record(Argument::that(function (BusinessCreatedEvent $event) use ($compareBusiness) {
             return $compareBusiness($event->getBusiness());
         }))->shouldBeCalled();
 

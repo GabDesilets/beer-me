@@ -55,8 +55,7 @@ class PromisesEventHandlerMiddleware implements MessageBusMiddleware
      */
     public function handle($message, callable $next)
     {
-        foreach ($this->promises as $promise)
-        {
+        foreach ($this->promises as $promise) {
             if ($promise->canHandle($message)) {
                 $promise->handle($message);
             }

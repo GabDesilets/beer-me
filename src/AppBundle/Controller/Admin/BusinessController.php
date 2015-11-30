@@ -70,7 +70,7 @@ class BusinessController extends Controller
             /** @var Business $business */
             // Register a temporary event to catch the created business from the event raised
             $business = $this->get('app.event_promises')->delegate(
-                function(BusinessCreatedEvent $event) {
+                function (BusinessCreatedEvent $event) {
                     return $event->getBusiness();
                 }
             );

@@ -166,4 +166,3 @@ class Business
         return $this->administratorUser;
     }
 }
-
