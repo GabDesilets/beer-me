@@ -2,74 +2,49 @@
 
 namespace AppBundle\Command;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Validator\Constraints as AppBundleAssert;
+
+/**
+ * Command to create a new business
+ *
+ * @AppBundleAssert\UniqueBusiness
+ */
 class CreateBusinessCommand
 {
-    private $name;
-    private $address;
-    private $phone;
-    private $administratorEmail;
+    /**
+     * Business name
+     *
+     * @var string
+     * @Assert\NotBlank()
+     */
+    public $name;
 
     /**
-     * @return mixed
+     * Business address
+     *
+     * @var string
+     * @Assert\NotBlank()
      */
-    public function getName()
-    {
-        return $this->name;
-    }
+    public $address;
 
     /**
-     * @param mixed $name
+     * Business phone number
+     *
+     * The phone number is stored as a string to allow alphanumerical numbers, extensions and such.
+     *
+     * @var string
+     * @Assert\NotBlank()
      */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+    public $phone;
 
     /**
-     * @return mixed
+     * Business administrator email
+     *
+     * This email is used to create the user account associated with the business.
+     *
+     * @var string
+     * @Assert\NotBlank()
      */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * @param mixed $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param mixed $phone
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdministratorEmail()
-    {
-        return $this->administratorEmail;
-    }
-
-    /**
-     * @param mixed $administratorEmail
-     */
-    public function setAdministratorEmail($administratorEmail)
-    {
-        $this->administratorEmail = $administratorEmail;
-    }
+    public $administratorEmail;
 }

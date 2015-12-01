@@ -5,12 +5,12 @@ namespace AppBundle\Command;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Command to edit an existing business
+ * Command to delete a business
  */
-class EditBusinessCommand extends CreateBusinessCommand
+class DeleteBusinessCommand
 {
     /**
-     * The identifier of the business
+     * The identifier of the business to delete
      *
      * @var integer
      * @Assert\Type(type="integer")

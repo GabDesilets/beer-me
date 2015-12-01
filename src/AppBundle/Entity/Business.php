@@ -3,15 +3,19 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use RandomLib\Factory;
+use RandomLib\Generator;
 
 /**
  * Business
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BusinessRepository")
  * @ORM\Table(name="businesses")
  */
 class Business
 {
+    /** @const The length of the default password that is used with a new instance */
+    const DEFAULT_PASSWORD_LENGTH = 32;
     /**
      * @var integer
      *
@@ -58,7 +62,16 @@ class Business
 
         $this->administratorUser = new User();
         $this->administratorUser->setEmail($administratorEmail);
-        $this->administratorUser->setPlainPassword('123456'); // TODO Change for random
+
+        // Use a cryptographically secure library to generate a temporary password for the user account
+        // Medium strength is used as a trade-off on the computation time
+        $factory = new Factory();
+        $password = $factory->getMediumStrengthGenerator()->generateString(
+            self::DEFAULT_PASSWORD_LENGTH,
+            Generator::CHAR_BASE64 | Generator::CHAR_SYMBOLS
+        );
+
+        $this->administratorUser->setPlainPassword($password);
     }
 
     /**
@@ -153,4 +166,3 @@ class Business
         return $this->administratorUser;
     }
 }
-

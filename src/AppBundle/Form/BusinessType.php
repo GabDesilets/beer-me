@@ -19,7 +19,7 @@ class BusinessType extends AbstractType
             ->add('name', TextType::class)
             ->add('address', TextType::class)
             ->add('phone', TextType::class)
-            ->add('administrator_email', EmailType::class)
+            ->add('administratorEmail', EmailType::class)
         ;
     }
 }

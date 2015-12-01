@@ -4,9 +4,15 @@ namespace AppBundle\Command;
 
 use AppBundle\Entity\Business;
 use AppBundle\Event\BusinessUpdatedEvent;
+use AppBundle\Exception\BusinessNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use SimpleBus\Message\Recorder\RecordsMessages;
 
+/**
+ * Handler for the business edition command
+ *
+ * This handler edit an existing business and raise a BusinessUpdatedEvent
+ */
 class EditBusinessCommandHandler
 {
     /** @var EntityManagerInterface */
@@ -15,22 +21,39 @@ class EditBusinessCommandHandler
     /** @var RecordsMessages */
     private $recorder;
 
+    /**
+     * EditBusinessCommandHandler constructor.
+     *
+     * @param RecordsMessages $recorder
+     * @param EntityManagerInterface $em
+     */
     public function __construct(RecordsMessages $recorder, EntityManagerInterface $em)
     {
         $this->em = $em;
         $this->recorder = $recorder;
     }
 
+    /**
+     * Handle the command
+     *
+     * @param EditBusinessCommand $command
+     * @throws BusinessNotFoundException
+     */
     public function handle(EditBusinessCommand $command)
     {
-        $business = $this->em->getRepository('AppBundle:Business')->find($command->getId());
+        $business = $this->em->getRepository('AppBundle:Business')->find($command->id);
 
-        $business->setName($command->getName());
-        $business->setPhone($command->getPhone());
-        $business->setAddress($command->getAddress());
+        // If we try to edit an non-existing business, we must throw an exception to inform the user
+        if (null === $business) {
+            throw new BusinessNotFoundException();
+        }
+
+        $business->setName($command->name);
+        $business->setPhone($command->phone);
+        $business->setAddress($command->address);
 
         $administrator = $business->getAdministratorUser();
-        $administrator->setEmail($command->getAdministratorEmail());
+        $administrator->setEmail($command->administratorEmail);
 
         $this->em->flush();
 
