@@ -10,23 +10,23 @@
         {{ form_start(form) }}
         <div class="col-lg-5">
             <h2 class="form-signin-heading">Get started with an account</h2>
-            {{ form_row(form.first_name) }}
-            {{ form_row(form.last_name) }}
+            {{ form_row(form.firstName) }}
+            {{ form_row(form.lastName) }}
             {{ form_row(form.email) }}
-            {{ form_row(form.business_name) }}
+            {{ form_row(form.businessName) }}
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12">
-                        {{ form_label(form.phone_one, 'Business phone') }}
+                        {{ form_label(form.phoneOne, 'Business phone') }}
                     </div>
                     <div class="col-sm-3">
-                        {{ form_widget(form.phone_one) }}
+                        {{ form_widget(form.phoneOne) }}
                     </div>
                     <div class="col-sm-3">
-                        {{ form_widget(form.phone_two) }}
+                        {{ form_widget(form.phoneTwo) }}
                     </div>
                     <div class="col-sm-3">
-                        {{ form_widget(form.phone_three) }}
+                        {{ form_widget(form.phoneThree) }}
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
         <div class="col-lg-4">
             <h2 class="form-signin-heading">Where do you beer mate ?</h2>
             {{ form_row(form.address) }}
-            {{ form_row(form.zip_code) }}
+            {{ form_row(form.zipCode) }}
             {{ form_row(form.country) }}
             {{ form_row(form.province) }}
             {{ form_row(form.city) }}

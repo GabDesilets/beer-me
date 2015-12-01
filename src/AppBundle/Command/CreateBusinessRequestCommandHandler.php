@@ -27,18 +27,18 @@ class CreateBusinessRequestCommandHandler
     public function handle(CreateBusinessRequestCommand $command)
     {
         $businessRequest = new BusinessRequest(
-            $command->getFirstName(),
-            $command->getLastName(),
-            $command->getBusinessName(),
-            $command->getEmail(),
-            $command->getAddress(),
-            $command->getZipCode(),
-            $command->getCountry(),
-            $command->getProvince(),
-            $command->getCity(),
-            $command->getPhoneOne(),
-            $command->getPhoneTwo(),
-            $command->getPhoneThree()
+            $command->firstName,
+            $command->lastName,
+            $command->businessName,
+            $command->email,
+            $command->address,
+            $command->zipCode,
+            $command->country,
+            $command->province,
+            $command->city,
+            $command->phoneOne,
+            $command->phoneTwo,
+            $command->phoneThree
         );
 
         $businessRequest->setPhone();
