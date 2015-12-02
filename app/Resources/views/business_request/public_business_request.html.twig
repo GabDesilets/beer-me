@@ -1,5 +1,6 @@
 {% extends "::base.html.twig" %}
 {% block body %}
+    {{ parent() }}
     <div class="row">
         <div class="col-lg-3">
             <h2 class="form-signin-heading">Why us</h2>
@@ -42,7 +43,4 @@
         </div>
         {{ form_end(form) }}
     </div>
-{% endblock %}
-{% block javascripts %}
-
 {% endblock %}

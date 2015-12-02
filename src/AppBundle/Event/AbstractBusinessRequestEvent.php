@@ -7,18 +7,18 @@ use AppBundle\Entity\BusinessRequest;
 abstract class AbstractBusinessRequestEvent
 {
     /** @var BusinessRequest */
-    private $entity;
+    private $businessRequest;
 
-    public function __construct($entity)
+    public function __construct($businessRequest)
     {
-        $this->entity = $entity;
+        $this->businessRequest = $businessRequest;
     }
 
     /**
      * @return BusinessRequest
      */
-    public function getEntity()
+    public function getBusinessRequest()
     {
-        return $this->entity;
+        return $this->businessRequest;
     }
 }

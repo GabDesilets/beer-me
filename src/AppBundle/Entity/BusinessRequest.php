@@ -92,22 +92,6 @@ class BusinessRequest
     private $id;
 
     /**
-     * @var string
-     */
-    private $phoneOne;
-
-    /**
-     * @var string
-     */
-    private $phoneTwo;
-
-    /**
-     * @var string
-     */
-    private $phoneThree;
-
-
-    /**
      * AccessRequests constructor.
      * @param string $firstName
      * @param string $lastName
@@ -145,10 +129,7 @@ class BusinessRequest
         $this->country = $country;
         $this->province = $province;
         $this->city = $city;
-        $this->phoneOne = $phoneOne;
-        $this->phoneTwo = $phoneTwo;
-        $this->phoneThree = $phoneThree;
-        $this->setPhone();
+        $this->phone = join('-', [$phoneOne, $phoneTwo, $phoneThree]);
     }
 
 
@@ -161,14 +142,6 @@ class BusinessRequest
     }
 
     /**
-     * @param string $firstName
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    }
-
-    /**
      * @return string
      */
     public function getLastName()
@@ -177,27 +150,11 @@ class BusinessRequest
     }
 
     /**
-     * @param string $lastName
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    }
-
-    /**
      * @return string
      */
     public function getBusinessName()
     {
         return $this->businessName;
-    }
-
-    /**
-     * @param string $businessName
-     */
-    public function setBusinessName($businessName)
-    {
-        $this->businessName = $businessName;
     }
 
     /**
@@ -241,27 +198,11 @@ class BusinessRequest
     }
 
     /**
-     * @param string $zipCode
-     */
-    public function setZipCode($zipCode)
-    {
-        $this->zipCode = str_replace(' ', '', $zipCode);
-    }
-
-    /**
      * @return string
      */
     public function getCountry()
     {
         return $this->country;
-    }
-
-    /**
-     * @param string $country
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
     }
 
     /**
@@ -273,27 +214,11 @@ class BusinessRequest
     }
 
     /**
-     * @param string $province
-     */
-    public function setProvince($province)
-    {
-        $this->province = $province;
-    }
-
-    /**
      * @return string
      */
     public function getCity()
     {
         return $this->city;
-    }
-
-    /**
-     * @param string $city
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
     }
 
     /**
@@ -310,59 +235,5 @@ class BusinessRequest
     public function getPhone()
     {
         return $this->phone;
-    }
-
-    public function setPhone()
-    {
-        $this->phone = join('-', [$this->phoneOne, $this->phoneTwo, $this->phoneThree]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhoneOne()
-    {
-        return $this->phoneOne;
-    }
-
-
-    /**
-     * @param mixed $phoneOne
-     */
-    public function setPhoneOne($phoneOne)
-    {
-        $this->phoneOne = $phoneOne;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPhoneTwo()
-    {
-        return $this->phoneTwo;
-    }
-
-    /**
-     * @param mixed $phoneTwo
-     */
-    public function setPhoneTwo($phoneTwo)
-    {
-        $this->phoneTwo = $phoneTwo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPhoneThree()
-    {
-        return $this->phoneThree;
-    }
-
-    /**
-     * @param mixed $phoneThree
-     */
-    public function setPhoneThree($phoneThree)
-    {
-        $this->phoneThree = $phoneThree;
     }
 }

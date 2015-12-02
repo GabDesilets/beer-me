@@ -28,13 +28,6 @@ class BusinessRequestController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var BusinessRequests $entity */
-            $entity = $this->get('app.event_promises')->delegate(
-                function (BusinessRequestCreatedEvent $event) {
-                    return $event->getEntity();
-                }
-            );
-
             $this->get('command_bus')->handle($form->getData());
             return $this->redirectToRoute('business.request.thank');
         }

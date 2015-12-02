@@ -19,7 +19,7 @@ class BusinessRequestType extends AbstractType
         $builder
             ->add('firstName', TextType::class)
             ->add('lastName', TextType::class)
-            ->add('email', TextType::class)
+            ->add('email', EmailType::class)
             ->add('businessName', TextType::class)
             ->add('phoneOne', NumberType::class)
             ->add('phoneTwo', NumberType::class)
