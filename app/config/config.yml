@@ -108,7 +108,7 @@ swiftmailer:
 
 fos_user:
     db_driver: orm
-    firewall_name: main # To be replaced by the "business" firewall
+    firewall_name: business
     user_class: AppBundle\Entity\User
 
 jms_translation:

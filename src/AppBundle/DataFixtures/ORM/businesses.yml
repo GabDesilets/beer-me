@@ -3,7 +3,8 @@ AppBundle\Entity\User:
     username: <name()>
     email: <email()>
     enabled: <boolean()>
-    plainPassword: <lexify()>
+    # Password set for testing purpose
+    plainPassword: 123456
 
 AppBundle\Entity\Business:
   business_{1..100}:
