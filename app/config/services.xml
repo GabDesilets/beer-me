@@ -88,6 +88,11 @@
             <argument>%business_firewall%</argument>
         </service>
 
+        <service id="app.form.type.beer" class="AppBundle\Form\BusinessBeerType">
+            <argument type="service" id="session.business" />
+            <tag name="form.type" />
+        </service>
+
     </services>
 
 </container>

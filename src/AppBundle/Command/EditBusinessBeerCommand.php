@@ -1,7 +1,9 @@
 <?php
 
 namespace AppBundle\Command;
+
 use AppBundle\Entity\BusinessBeerCategory;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Command to edit an existing business beer
