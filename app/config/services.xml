@@ -18,6 +18,20 @@
             <tag name="command_handler" handles="AppBundle\Command\CreateBusinessRequestCommand" />
         </service>
 
+        <service id="app.command_handler.create_business_beer_category"
+                 class="AppBundle\Command\CreateBusinessBeerCategoryCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="command_handler" handles="AppBundle\Command\CreateBusinessBeerCategoryCommand" />
+        </service>
+
+        <service id="app.command_handler.create_business_beer"
+                 class="AppBundle\Command\CreateBusinessBeerCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="command_handler" handles="AppBundle\Command\CreateBusinessBeerCommand" />
+        </service>
+
 
         <service id="app.command_handler.edit_business" class="AppBundle\Command\EditBusinessCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
@@ -25,10 +39,38 @@
             <tag name="command_handler" handles="AppBundle\Command\EditBusinessCommand" />
         </service>
 
+        <service id="app.command_handler.edit_business_beer_category"
+                 class="AppBundle\Command\EditBusinessBeerCategoryCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="command_handler" handles="AppBundle\Command\EditBusinessBeerCategoryCommand" />
+        </service>
+
+        <service id="app.command_handler.edit_business_beer"
+                 class="AppBundle\Command\EditBusinessBeerCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="command_handler" handles="AppBundle\Command\EditBusinessBeerCommand" />
+        </service>
+
         <service id="app.command_handler.delete_business" class="AppBundle\Command\DeleteBusinessCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessCommand" />
+        </service>
+
+        <service id="app.command_handler.delete_business_beer_category"
+                 class="AppBundle\Command\DeleteBusinessBeerCategoryCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessBeerCategoryCommand" />
+        </service>
+
+        <service id="app.command_handler.delete_business_beer"
+                 class="AppBundle\Command\DeleteBusinessBeerCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessBeerCommand" />
         </service>
 
         <service id="app.validator.unique_business" class="AppBundle\Validator\Constraints\UniqueBusinessValidator">
