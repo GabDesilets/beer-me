@@ -81,6 +81,13 @@
         <service id="app.event_promises" class="AppBundle\Event\Promise\PromisesEventHandlerMiddleware">
             <tag name="event_bus_middleware" />
         </service>
+
+        <service id="session.business" class="AppBundle\Service\SessionBusinessService">
+            <argument type="service" id="security.token_storage" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%business_firewall%</argument>
+        </service>
+
     </services>
 
 </container>

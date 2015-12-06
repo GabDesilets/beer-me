@@ -16,6 +16,8 @@ class HomeController extends Controller
      */
     public function homeAction()
     {
-        return new Response('<body>business</body>');
+        $business = $this->get('session.business')->getBusiness();
+
+        return new Response('<body>business: '.$business->getName().'</body>');
     }
 }
