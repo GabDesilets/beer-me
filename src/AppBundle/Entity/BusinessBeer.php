@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="business_beers")
  * @ORM\Entity
  */
-class BusinessBeer
+class BusinessBeer implements BusinessOwnedInterface
 {
     /**
      * @var integer

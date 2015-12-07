@@ -93,6 +93,11 @@
             <tag name="form.type" />
         </service>
 
+        <service id="app.voter.business_owned" class="AppBundle\Security\BusinessOwnedVoter" public="false">
+            <argument type="service" id="session.business" />
+            <tag name="security.voter" />
+        </service>
+
     </services>
 
 </container>

@@ -87,6 +87,8 @@ class BeerCategoryController extends Controller
     {
         $category = $this->getDoctrine()->getRepository('AppBundle:BusinessBeerCategory')->find($id);
 
+        $this->denyAccessUnlessGranted('edit', $category);
+
         // If the category is not found, show a 404
         if (!$category) {
             throw $this->createNotFoundException('Unable to find Business beer category entity.');
@@ -106,6 +108,8 @@ class BeerCategoryController extends Controller
     public function editAction(Request $request, $id)
     {
         $category = $this->getDoctrine()->getRepository('AppBundle:BusinessBeerCategory')->find($id);
+
+        $this->denyAccessUnlessGranted('edit', $category);
 
         // If the category is not found, show a 404
         if (!$category) {
@@ -145,6 +149,12 @@ class BeerCategoryController extends Controller
      */
     public function deleteAction($id)
     {
+        $category = $this->getDoctrine()->getRepository('AppBundle:BusinessBeerCategory')->find($id);
+
+        if ($category) {
+            $this->denyAccessUnlessGranted('edit', $category);
+        }
+
         $command = new DeleteBusinessBeerCategoryCommand();
         $command->id = $id;
 

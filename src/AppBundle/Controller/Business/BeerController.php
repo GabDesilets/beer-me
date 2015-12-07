@@ -84,6 +84,8 @@ class BeerController extends Controller
     {
         $beer = $this->getDoctrine()->getRepository('AppBundle:BusinessBeer')->find($id);
 
+        $this->denyAccessUnlessGranted('edit', $beer);
+
         // If the beer is not found, show a 404
         if (!$beer) {
             throw $this->createNotFoundException('Unable to find Business beer entity.');
@@ -103,6 +105,8 @@ class BeerController extends Controller
     public function editAction(Request $request, $id)
     {
         $beer = $this->getDoctrine()->getRepository('AppBundle:BusinessBeer')->find($id);
+
+        $this->denyAccessUnlessGranted('edit', $beer);
 
         // If the beer is not found, show a 404
         if (!$beer) {
@@ -142,6 +146,12 @@ class BeerController extends Controller
      */
     public function deleteAction($id)
     {
+        $beer = $this->getDoctrine()->getRepository('AppBundle:BusinessBeer')->find($id);
+
+        if ($beer) {
+            $this->denyAccessUnlessGranted('edit', $beer);
+        }
+
         $command = new DeleteBusinessBeerCommand();
         $command->id = $id;
 
