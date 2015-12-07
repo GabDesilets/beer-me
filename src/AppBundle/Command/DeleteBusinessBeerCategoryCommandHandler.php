@@ -3,6 +3,8 @@
 namespace AppBundle\Command;
 
 use AppBundle\Event\BusinessBeerCategoryDeletedEvent;
+use AppBundle\Exception\BusinessBeerCategoryInUseException;
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use SimpleBus\Message\Recorder\RecordsMessages;
 
@@ -35,6 +37,7 @@ class DeleteBusinessBeerCategoryCommandHandler
      * Handle the command
      *
      * @param DeleteBusinessBeerCategoryCommand $command
+     * @throws BusinessBeerCategoryInUseException
      */
     public function handle(DeleteBusinessBeerCategoryCommand $command)
     {
@@ -42,10 +45,15 @@ class DeleteBusinessBeerCategoryCommandHandler
 
         // If the category is not found, we do nothing.  No error or exception is raised.
         if ($category) {
-            $this->em->remove($category);
-            $this->em->flush();
+            try {
+                $this->em->remove($category);
+                $this->em->flush();
 
-            $this->recorder->record(new BusinessBeerCategoryDeletedEvent($category));
+                $this->recorder->record(new BusinessBeerCategoryDeletedEvent($category));
+            } catch (ForeignKeyConstraintViolationException $e)
+            {
+                throw new BusinessBeerCategoryInUseException('', 0, $e);
+            }
         }
     }
 }

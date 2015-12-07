@@ -7,6 +7,7 @@ use AppBundle\Command\DeleteBusinessBeerCategoryCommand;
 use AppBundle\Command\EditBusinessBeerCategoryCommand;
 use AppBundle\Entity\BusinessBeerCategory;
 use AppBundle\Event\BusinessBeerCategoryCreatedEvent;
+use AppBundle\Exception\BusinessBeerCategoryInUseException;
 use AppBundle\Form\BusinessBeerCategoryType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -158,7 +159,11 @@ class BeerCategoryController extends Controller
         $command = new DeleteBusinessBeerCategoryCommand();
         $command->id = $id;
 
-        $this->get('command_bus')->handle($command);
+        try {
+            $this->get('command_bus')->handle($command);
+        } catch (BusinessBeerCategoryInUseException $e) {
+            $this->addFlash('warning', 'Category is currently in use.  Cannot delete');
+        }
 
         return $this->redirectToRoute('business.beer-category.list');
     }
