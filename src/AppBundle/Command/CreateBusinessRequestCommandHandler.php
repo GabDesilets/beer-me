@@ -41,8 +41,6 @@ class CreateBusinessRequestCommandHandler
             $command->phoneThree
         );
 
-        $businessRequest->setPhone();
-
         $this->em->persist($businessRequest);
         $this->em->flush();
 
