@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/adminlte.js') }}"></script>
+{% endblock %}
+
+{% block title %}{{ parent() }} :: Business{% endblock %}
+
+{% block body_classes %}hold-transition skin-blue sidebar-mini{% endblock %}

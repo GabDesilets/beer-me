@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class HomeController extends Controller
 {
     /**
-     * @Route("/", name="business.home")
+     * @Route("/", name="business.homepage")
      */
     public function homeAction()
     {
