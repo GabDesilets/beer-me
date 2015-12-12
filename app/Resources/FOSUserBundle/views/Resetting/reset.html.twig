@@ -1,5 +1,23 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends ':business:base.html.twig' %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block body_classes %}hold-transition login-page{% endblock %}
+
+{% block body %}
+    <div class="login-box">
+        <div class="login-logo">
+            Beerme
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">Reset your password</p>
+
+            <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
+                {{ form_widget(form) }}
+                <div class="row">
+                    <div class="col-xs-6 col-xs-push-5">
+                        <input type="submit" class="btn btn-primary" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
