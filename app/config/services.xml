@@ -78,6 +78,18 @@
             <tag name="validator.constraint_validator" alias="app.unique_business" />
         </service>
 
+        <service id="app.validator.unique_business_beer_category"
+                 class="AppBundle\Validator\Constraints\UniqueBusinessBeerCategoryValidator">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="validator.constraint_validator" alias="app.unique_business_beer_category" />
+        </service>
+
+        <service id="app.validator.unique_business_beer"
+                 class="AppBundle\Validator\Constraints\UniqueBusinessBeerValidator">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="validator.constraint_validator" alias="app.unique_business_beer" />
+        </service>
+
         <service id="app.event_promises" class="AppBundle\Event\Promise\PromisesEventHandlerMiddleware">
             <tag name="event_bus_middleware" />
         </service>

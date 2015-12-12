@@ -2,13 +2,14 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Entity\BusinessBeerCategory;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\BusinessBeerCategory;
+use AppBundle\Validator\Constraints as AppBundleAssert;
 
 /**
  * Command to create a new business beer
  *
- * TODO Unique beer
+ * @AppBundleAssert\UniqueBusinessBeer()
  */
 class CreateBusinessBeerCommand
 {

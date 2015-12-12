@@ -3,11 +3,12 @@
 namespace AppBundle\Command;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Validator\Constraints as AppBundleAssert;
 
 /**
  * Command to edit an existing business beer category
  *
- * TODO Unique beer category
+ * @AppBundleAssert\UniqueBusinessBeerCategory()
  */
 class EditBusinessBeerCategoryCommand
 {
