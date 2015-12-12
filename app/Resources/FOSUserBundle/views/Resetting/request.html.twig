@@ -1,0 +1,31 @@
+{% extends ':business:base.html.twig' %}
+
+{% block body_classes %}hold-transition login-page{% endblock %}
+
+{% block body %}
+    <div class="login-box">
+        <div class="login-logo">
+            Beerme
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">Reset your password</p>
+
+            <form action="{{ path('fos_user_resetting_send_email') }}" method="post">
+                <div>
+                    {% if invalid_username is defined %}
+                        <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
+                    {% endif %}
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" placeholder="Username" name="username">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-xs-push-6">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat" name="_submit">Reset password</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

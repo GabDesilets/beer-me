@@ -44,7 +44,7 @@ security:
                 target: /admin
 
         business_login:
-            pattern: ^/business/login$
+            pattern: ^/business/(login$|resetting)
             security: false
 
         business:

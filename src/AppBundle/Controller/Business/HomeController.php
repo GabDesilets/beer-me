@@ -2,8 +2,11 @@
 
 namespace AppBundle\Controller\Business;
 
+use AppBundle\Command\EditBusinessCommand;
+use AppBundle\Form\BusinessType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -16,8 +19,33 @@ class HomeController extends Controller
      */
     public function homeAction()
     {
+        return $this->render(':business:home.html.twig');
+    }
+
+    /**
+     * @Route("/profile", name="fos_user_profile_show")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function profileFunction(Request $request)
+    {
         $business = $this->get('session.business')->getBusiness();
 
-        return new Response('<body>business: '.$business->getName().'</body>');
+        $command = new EditBusinessCommand();
+        $command->id = $business->getId();
+        $command->name = $business->getName();
+        $command->address = $business->getAddress();
+        $command->phone = $business->getPhone();
+        $command->administratorEmail = $business->getAdministratorUser()->getEmail();
+
+        $form = $this->createForm(BusinessType::class, $command);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('command_bus')->handle($command);
+            return $this->redirectToRoute('business.homepage');
+        }
+
+        return $this->render(':business:profile.html.twig', ['form' => $form->createView()]);
     }
 }
