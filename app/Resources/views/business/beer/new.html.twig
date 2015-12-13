@@ -1,7 +1,7 @@
 {% extends ':business:layout.html.twig' %}
 
 {% block title -%}
-    Create beer :: {{ parent() }}
+    {{ 'form.beer.create'|trans }} :: {{ parent() }}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
                 <div class="col-sm-12">
                     {{ form_start(form) }}
                     {{ form_rest(form) }}
-                    <input type="Submit" value="Create" class="btn btn-primary"/>
+                    <input type="Submit" value="{{ 'form.create'|trans }}" class="btn btn-primary"/>
                     {{ form_end(form) }}
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <ul class="record_actions">
                     <li>
                         <a href="{{ path('business.beer.list') }}">
-                            Back to the list
+                            {{ 'form.back-to-list'|trans }}
                         </a>
                     </li>
                 </ul>

@@ -1,7 +1,7 @@
 {% extends ':business:layout.html.twig' %}
 
 {% block title -%}
-    Edit beer :: {{ parent() }}
+    {{ 'form.beer.edit'|trans }} :: {{ parent() }}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
                 <div class="col-sm-12">
                     {{ form_start(form) }}
                     {{ form_rest(form) }}
-                    <input type="Submit" value="Update" class="btn btn-primary"/>
+                    <input type="Submit" value="{{ 'form.update'|trans }}" class="btn btn-primary"/>
                     {{ form_end(form) }}
                 </div>
             </div>
@@ -22,13 +22,13 @@
                 <ul class="record_actions">
                     <li>
                         <a href="{{ path('business.beer.list') }}">
-                            Back to the list
+                            {{ 'form.back-to-list'|trans }}
                         </a>
                     </li>
                     <li>
                         <form action="{{ path('business.beer.delete', {'id': entity.id}) }}" method="POST">
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn-link">Delete</button>
+                            <button type="submit" class="btn-link">{{ 'form.delete'|trans }}</button>
                         </form>
                     </li>
                 </ul>

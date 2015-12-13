@@ -6,5 +6,5 @@
         <input type="submit" class="btn btn-primary" value="Save">
     {{ form_end(form) }}
 
-    <a href="{{ path('fos_user_change_password') }}">Change password</a>
+    <a href="{{ path('fos_user_change_password') }}">{{ 'change_password.submit'|trans({}, 'FOSUserBundle') }}</a>
 {% endblock %}
