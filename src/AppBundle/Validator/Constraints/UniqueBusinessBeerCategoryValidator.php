@@ -2,8 +2,9 @@
 
 namespace AppBundle\Validator\Constraints;
 
+use AppBundle\Command\CreateBusinessBeerCategoryCommand;
 use AppBundle\Command\EditBusinessBeerCategoryCommand;
-use AppBundle\Command\EditBusinessCommand;
+use AppBundle\Entity\Business;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -36,14 +37,17 @@ class UniqueBusinessBeerCategoryValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        // Get the id of the current business to exclude from the comparison
-        $currentBusinessId = $value instanceof EditBusinessBeerCategoryCommand
+        // Get the id of the current category to exclude from the comparison
+        $currentCategoryId = $value instanceof EditBusinessBeerCategoryCommand
             ? $value->id
             : null;
 
+        // Get the business related to the command
+        $business = $this->getBusiness($value);
+
         // Only support the new validation interface
         if ($this->context instanceof ExecutionContextInterface) {
-            if ($this->businessExists('name', $value->name, $currentBusinessId)) {
+            if ($this->categoryExists('name', $value->name, $currentCategoryId, $business)) {
                 $this->context->buildViolation('Not unique')
                     ->atPath('name')
                     ->addViolation();
@@ -52,18 +56,46 @@ class UniqueBusinessBeerCategoryValidator extends ConstraintValidator
     }
 
     /**
-     * Check if another business is found with the same value for the specified field
+     * Check if another category is found with the same value for the specified field for the same business
      *
      * @param string $field The entity field
      * @param string $value The value to compare
-     * @param integer|null $compareId The id of a business to ignore.  Null if no business should be ignored
+     * @param integer|null $compareId The id of a category to ignore.  Null if no business should be ignored
+     * @param Business $business
      * @return bool
      */
-    private function businessExists($field, $value, $compareId)
+    private function categoryExists($field, $value, $compareId, $business)
     {
-        $businesses = $this->em->getRepository('AppBundle:BusinessBeerCategory')->findBy([$field => $value]);
-        $business = $businesses ? $businesses[0] : null;
+        $categories = $this->em->getRepository('AppBundle:BusinessBeerCategory')
+            ->findBy([$field => $value, 'business' => $business]);
 
-        return $business && $business->getId() != $compareId;
+        // Since the field is unique the array will always contains none or only one instance
+        $category = $categories ? $categories[0] : null;
+
+        return $category && $category->getId() != $compareId;
+    }
+
+    /**
+     * Get the business related to the command.
+     *
+     * The business is directly in the command for a creation or obtainable with the id for an edition
+     *
+     * @param $value
+     * @return Business|null
+     */
+    private function getBusiness($value)
+    {
+        if ($value instanceof CreateBusinessBeerCategoryCommand) {
+            return $value->business;
+        }
+
+        if ($value instanceof EditBusinessBeerCategoryCommand) {
+            $category = $this->em->getRepository('AppBundle:BusinessBeerCategory')->find($value->id);
+            return $category
+                ? $category->getBusiness()
+                : null;
+        }
+
+        return null;
     }
 }

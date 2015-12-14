@@ -2,7 +2,9 @@
 
 namespace AppBundle\Validator\Constraints;
 
+use AppBundle\Command\CreateBusinessBeerCommand;
 use AppBundle\Command\EditBusinessBeerCommand;
+use AppBundle\Entity\Business;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -40,9 +42,11 @@ class UniqueBusinessBeerValidator extends ConstraintValidator
             ? $value->id
             : null;
 
+        $business = $this->getBusiness($value);
+
         // Only support the new validation interface
         if ($this->context instanceof ExecutionContextInterface) {
-            if ($this->businessExists('name', $value->name, $currentBusinessId)) {
+            if ($this->businessExists('name', $value->name, $currentBusinessId, $business)) {
                 $this->context->buildViolation('Not unique')
                     ->atPath('name')
                     ->addViolation();
@@ -58,11 +62,37 @@ class UniqueBusinessBeerValidator extends ConstraintValidator
      * @param integer|null $compareId The id of a business to ignore.  Null if no business should be ignored
      * @return bool
      */
-    private function businessExists($field, $value, $compareId)
+    private function businessExists($field, $value, $compareId, $business)
     {
-        $businesses = $this->em->getRepository('AppBundle:BusinessBeer')->findBy([$field => $value]);
-        $business = $businesses ? $businesses[0] : null;
+        $beers = $this->em->getRepository('AppBundle:BusinessBeer')->findBy([$field => $value, 'business' => $business]);
 
-        return $business && $business->getId() != $compareId;
+        // Since the field is unique the array will always contains none or only one instance
+        $beer = $beers ? $beers[0] : null;
+
+        return $beer && $beer->getId() != $compareId;
+    }
+
+    /**
+     * Get the business related to the command.
+     *
+     * The business is directly in the command for a creation or obtainable with the id for an edition
+     *
+     * @param $value
+     * @return Business|null
+     */
+    private function getBusiness($value)
+    {
+        if ($value instanceof CreateBusinessBeerCommand) {
+            return $value->category->getBusiness();
+        }
+
+        if ($value instanceof EditBusinessBeerCommand) {
+            $beer = $this->em->getRepository('AppBundle:BusinessBeer')->find($value->id);
+            return $beer
+                ? $beer->getBusiness()
+                : null;
+        }
+
+        return null;
     }
 }

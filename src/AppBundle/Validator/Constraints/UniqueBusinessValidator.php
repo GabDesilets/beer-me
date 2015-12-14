@@ -84,6 +84,8 @@ class UniqueBusinessValidator extends ConstraintValidator
     private function businessExists($field, $value, $compareId)
     {
         $businesses = $this->em->getRepository('AppBundle:Business')->findBy([$field => $value]);
+
+        // Since the field is unique the array will always contains none or only one instance
         $business = $businesses ? $businesses[0] : null;
 
         return $business && $business->getId() != $compareId;
