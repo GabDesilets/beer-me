@@ -50,7 +50,11 @@
                         <td>
                             <ul class="list-unstyled list-inline">
                                 <li>
-                                    <a href="{{ path('admin.business.show', { 'id': businessRequest.id }) }}">show</a>
+                                    <form action="{{ path('admin.business.request.accept', {'id': businessRequest
+                                        .id}) }}" method="POST">
+                                        <input type="hidden" name="_method" value="POST">
+                                        <button type="submit" class="btn-link">Accept</button>
+                                    </form>
                                 </li>
                                 <li>
                                     <form action="{{ path('admin.business.request.delete', {'id': businessRequest

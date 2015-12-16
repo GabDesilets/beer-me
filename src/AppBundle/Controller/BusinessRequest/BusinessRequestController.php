@@ -2,10 +2,10 @@
 
 namespace AppBundle\Controller\BusinessRequest;
 
+use AppBundle\Command\AcceptBusinessRequestCommand;
 use AppBundle\Command\CreateBusinessRequestCommand;
 use AppBundle\Command\DeleteBusinessRequestCommand;
 use AppBundle\Form\BusinessRequestType;
-use AppBundle\Form\RequestAccessType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -44,12 +44,12 @@ class BusinessRequestController extends Controller
     }
 
     /**
-     * @Route("/thank", name="business.request.thank")
+     * @Route("/business-request-thank", name="business.request.thank")
      * @return Response
      */
     public function thankAction()
     {
-        return new Response("Thanks bud!");
+        return $this->render(':business_request:thanks.html.twig');
     }
 
     /**
@@ -107,6 +107,24 @@ class BusinessRequestController extends Controller
     public function deleteAction($id)
     {
         $command = new DeleteBusinessRequestCommand();
+        $command->id = $id;
+
+        $this->get('command_bus')->handle($command);
+
+        return $this->redirectToRoute('admin.business.request.list');
+    }
+
+    /**
+     * Accept a Business Request entity.
+     *
+     * @Route("/business-request/{id}/accept", name="admin.business.request.accept")
+     * @Method("POST")
+     * @param $id
+     * @return Response
+     */
+    public function acceptAction($id)
+    {
+        $command = new AcceptBusinessRequestCommand();
         $command->id = $id;
 
         $this->get('command_bus')->handle($command);
