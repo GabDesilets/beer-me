@@ -11,6 +11,14 @@
             <tag name="command_handler" handles="AppBundle\Command\CreateBusinessCommand" />
         </service>
 
+        <service id="app.command_handler.create_business_request"
+                 class="AppBundle\Command\CreateBusinessRequestCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="command_handler" handles="AppBundle\Command\CreateBusinessRequestCommand" />
+        </service>
+
+
         <service id="app.command_handler.edit_business" class="AppBundle\Command\EditBusinessCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
@@ -26,6 +34,21 @@
         <service id="app.validator.unique_business" class="AppBundle\Validator\Constraints\UniqueBusinessValidator">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <tag name="validator.constraint_validator" alias="app.unique_business" />
+        </service>
+
+        <service id="app.command_handler.delete_business_request"
+                 class="AppBundle\Command\DeleteBusinessRequestCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessRequestCommand" />
+        </service>
+
+        <service id="app.command_handler.accept_business_request"
+                 class="AppBundle\Command\AcceptBusinessRequestCommandHandler">
+            <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="command_bus" />
+            <tag name="command_handler" handles="AppBundle\Command\AcceptBusinessRequestCommand" />
         </service>
 
         <service id="app.event_promises" class="AppBundle\Event\Promise\PromisesEventHandlerMiddleware">

@@ -1,0 +1,79 @@
+{% extends ':admin:layout.html.twig' %}
+
+{% block content_header -%}
+    <h3>Business Request list</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="box">
+        <div class="box-header">
+            <div class="row">
+                <div class="col-sm-2 pull-right">
+                    <form method="get">
+                        <input type="hidden" name="filterField" value="br.name" />
+                        <div class="input-group margin">
+                            <input type="text" name="filterValue" value="{{ filterValue }}" class="form-control" />
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-flat btn-primary">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped table-condensed table-hover dataTable">
+                <thead>
+                <tr>
+                    <th>{{ knp_pagination_sortable(pagination, 'Id', 'br.id') }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Name', 'br.name') }}</th>
+                    <th>Administrator email</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Address', 'br.address') }}</th>
+                    <th>{{ knp_pagination_sortable(pagination, 'Phone', 'br.phone') }}</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for businessRequest in pagination %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('admin.business.show', { 'id': businessRequest.id }) }}">
+                                {{ businessRequest.id }}
+                            </a>
+                        </td>
+                        <td>{{ businessRequest.firstName ~' ' ~ businessRequest.lastName}}</td>
+                        <td>{{ businessRequest.email }}</td>
+                        <td>{{ businessRequest.address }}</td>
+                        <td>{{ businessRequest.phone }}</td>
+                        <td>
+                            <ul class="list-unstyled list-inline">
+                                <li>
+                                    <form action="{{ path('admin.business.request.accept', {'id': businessRequest
+                                        .id}) }}" method="POST">
+                                        <input type="hidden" name="_method" value="POST">
+                                        <button type="submit" class="btn-link">Accept</button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="{{ path('admin.business.request.delete', {'id': businessRequest
+                                        .id}) }}" method="POST">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn-link">Delete</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer">
+            <div class="pull-right">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
