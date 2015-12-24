@@ -46,7 +46,7 @@ class BusinessBeer implements BusinessOwnedInterface
     /**
      * @var BusinessBeerCategory
      *
-     * @ORM\ManyToOne(targetEntity="BusinessBeerCategory")
+     * @ORM\ManyToOne(targetEntity="BusinessBeerCategory", fetch="EAGER")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
