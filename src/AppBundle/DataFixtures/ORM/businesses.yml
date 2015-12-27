@@ -3,11 +3,26 @@ AppBundle\Entity\User:
     username: <name()>
     email: <email()>
     enabled: <boolean()>
-    plainPassword: <lexify()>
+    # Password set for testing purpose
+    plainPassword: 123456
 
 AppBundle\Entity\Business:
   business_{1..100}:
+    __construct: false
     name: <company()>
     address: <address()>
     phone: <numerify('###############')>
     administratorUser: @business_admin_<current()>
+
+AppBundle\Entity\BusinessBeerCategory:
+  business_beer_category_{1..100}:
+    __construct:
+      - @business_<numberBetween(1,100)>
+      - <sentence(2)>
+
+AppBundle\Entity\BusinessBeer:
+  business_beer_{1..1000}:
+    __construct:
+      - @business_beer_category_<numberBetween(1,100)>
+    name (unique): <sentence(3)>
+    notes: <text(500)>

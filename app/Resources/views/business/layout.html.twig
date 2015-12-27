@@ -1,0 +1,79 @@
+{% extends ':business:base.html.twig' %}
+
+{% block body %}
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="{{ path('business.homepage') }}" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini">Bme</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">Beerme</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">{{ 'navigation.toggle'|trans }}</span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs"><i class="fa fa-user"></i> {{ app.user.username }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path('fos_user_security_logout') }}">Sign out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- =============================================== -->
+
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">{{ 'navigation.main'|trans }}</li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">{{ 'profile'|trans }}</a></li>
+                    <li><a href="{{ path('business.beer.list') }}">{{ 'business.beers'|trans }}</a></li>
+                    <li><a href="{{ path('business.beer-category.list') }}">{{ 'business.beer_categories'|trans }}</a></li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- =============================================== -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                {% block content_header %}{% endblock %}
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                {% block content %}{% endblock %}
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+{% endblock %}

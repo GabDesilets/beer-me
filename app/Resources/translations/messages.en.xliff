@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2015-12-12T20:09:55Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="e864e7a9aaa795cc013b61981f98d8aae5d4e70d" resname="business.beer_categories">
+        <source>business.beer_categories</source>
+        <target>beer categories</target>
+        <jms:reference-file line="51">views/business/layout.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5607d8474180a61f69a283b4e58d465509665f28" resname="business.beers">
+        <source>business.beers</source>
+        <target>beers</target>
+        <jms:reference-file line="50">views/business/layout.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="27bd3bccd379bc79387cfbbc91f7dc14506fe922" resname="form.actions">
+        <source>form.actions</source>
+        <target>actions</target>
+        <jms:reference-file line="23">business/beer-category/index.html.twig</jms:reference-file>
+        <jms:reference-file line="25">business/beer/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2ce98eb683f76604d5d9a7eea58cd6bb154dde02" resname="form.back-to-list">
+        <source>form.back-to-list</source>
+        <target>back to the list</target>
+        <jms:reference-file line="25">business/beer-category/new.html.twig</jms:reference-file>
+        <jms:reference-file line="24">business/beer-category/show.html.twig</jms:reference-file>
+        <jms:reference-file line="25">business/beer-category/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="25">business/beer/new.html.twig</jms:reference-file>
+        <jms:reference-file line="32">business/beer/show.html.twig</jms:reference-file>
+        <jms:reference-file line="25">business/beer/edit.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="b4e9f3295ce1fc6c87303d87fa3c78047cab8061" resname="form.beer">
+        <source>form.beer</source>
+        <target>beer</target>
+        <jms:reference-file line="4">business/beer/show.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="30a9b4af43fb61e2a78dab11b28765f9445a7381" resname="form.beer-category">
+        <source>form.beer-category</source>
+        <target>beer category</target>
+        <jms:reference-file line="4">business/beer-category/show.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8200340c46a05a9c2bc46a086b7b881f2efbe471" resname="form.beer-category.edit">
+        <source>form.beer-category.edit</source>
+        <target>edit a beer category</target>
+        <jms:reference-file line="4">business/beer-category/edit.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="66fb1729b146e5ac9ce42106f88cb18e6da991f9" resname="form.beer-category.list">
+        <source>form.beer-category.list</source>
+        <target>beer categories</target>
+        <jms:reference-file line="4">business/beer-category/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="1adb4a8e26dade541a56246352c5d95537984840" resname="form.beer-category.name">
+        <source>form.beer-category.name</source>
+        <target>name</target>
+        <jms:reference-file line="15">business/beer-category/show.html.twig</jms:reference-file>
+        <jms:reference-file line="22">business/beer-category/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="30242d4193f83441c3a4a36c097754e891b9c4a4" resname="form.beer-category.new">
+        <source>form.beer-category.new</source>
+        <target>create a new beer category</target>
+        <jms:reference-file line="4">business/beer-category/new.html.twig</jms:reference-file>
+        <jms:reference-file line="13">business/beer-category/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="307d7acccee0185039526f1297af58f730577882" resname="form.beer.category">
+        <source>form.beer.category</source>
+        <target>beer category</target>
+        <jms:reference-file line="15">business/beer/show.html.twig</jms:reference-file>
+        <jms:reference-file line="22">business/beer/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2913ba565e3a0242528ac71ef4159f6e2ea1a30c" resname="form.beer.create">
+        <source>form.beer.create</source>
+        <target>create a new beer</target>
+        <jms:reference-file line="4">business/beer/new.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a425ec33a046ce2662764e7d512641c5b37c703b" resname="form.beer.edit">
+        <source>form.beer.edit</source>
+        <target>edit a beer</target>
+        <jms:reference-file line="4">business/beer/edit.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7cc116a18319fc831f51e254a8b7753a63f0cd87" resname="form.beer.list">
+        <source>form.beer.list</source>
+        <target>beers</target>
+        <jms:reference-file line="4">business/beer/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9b7bd47871ff3080ea6239cb60fc2b663bc1135f" resname="form.beer.name">
+        <source>form.beer.name</source>
+        <target>name</target>
+        <jms:reference-file line="19">business/beer/show.html.twig</jms:reference-file>
+        <jms:reference-file line="23">business/beer/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9ca7ff1f83ca40405336418f3fba12a3721f0c56" resname="form.beer.new">
+        <source>form.beer.new</source>
+        <target>create a new beer</target>
+        <jms:reference-file line="13">business/beer/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0a07e580742ba8b70512156f2856755ff04506aa" resname="form.beer.notes">
+        <source>form.beer.notes</source>
+        <target>notes</target>
+        <jms:reference-file line="23">business/beer/show.html.twig</jms:reference-file>
+        <jms:reference-file line="24">business/beer/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3275e9fd477d00081a907d08fa4e284006c5e610" resname="form.create">
+        <source>form.create</source>
+        <target>create</target>
+        <jms:reference-file line="17">business/beer-category/new.html.twig</jms:reference-file>
+        <jms:reference-file line="17">business/beer/new.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8272ae278d0579fdc17a97f595915deef5971ac9" resname="form.delete">
+        <source>form.delete</source>
+        <target>delete</target>
+        <jms:reference-file line="35">business/beer-category/show.html.twig</jms:reference-file>
+        <jms:reference-file line="31">business/beer-category/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="43">business/beer/show.html.twig</jms:reference-file>
+        <jms:reference-file line="31">business/beer/edit.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a928b07ca6312a18de68c5813e52d48f10e375fd" resname="form.edit">
+        <source>form.edit</source>
+        <target>edit</target>
+        <jms:reference-file line="29">business/beer-category/show.html.twig</jms:reference-file>
+        <jms:reference-file line="36">business/beer-category/index.html.twig</jms:reference-file>
+        <jms:reference-file line="37">business/beer/show.html.twig</jms:reference-file>
+        <jms:reference-file line="40">business/beer/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8a50d1d98a41b220bbe4bfd26830ef7c63162a44" resname="form.show">
+        <source>form.show</source>
+        <target>show</target>
+        <jms:reference-file line="33">business/beer-category/index.html.twig</jms:reference-file>
+        <jms:reference-file line="37">business/beer/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="e7e3f56569227af8c42f9881db57eeb0f930b86c" resname="form.update">
+        <source>form.update</source>
+        <target>update</target>
+        <jms:reference-file line="17">business/beer-category/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="17">business/beer/edit.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c38428f56e7fe5ff9eae31e3708431647daa5882" resname="navigation.main">
+        <source>navigation.main</source>
+        <target>main navigation</target>
+        <jms:reference-file line="48">views/business/layout.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c33aabb69d8d46052d316361e67ed7baed1b7fab" resname="navigation.toggle">
+        <source>navigation.toggle</source>
+        <target>toggle navigation</target>
+        <jms:reference-file line="19">views/business/layout.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="5d45a009b0383b5b3064b9820c18530333c910f9" resname="profile">
+        <source>profile</source>
+        <target>profile</target>
+        <jms:reference-file line="49">views/business/layout.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d088ea3d60401707370dce22c2c8f98d66a046a6" resname="section-titme.business">
+        <source>section-titme.business</source>
+        <target>business</target>
+        <jms:reference-file line="16">views/business/base.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
