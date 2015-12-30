@@ -1,0 +1,25 @@
+{% extends ':home:layout.html.twig' %}
+
+{% block content %}
+    <h1>{{ business.name }} <small>{{ business.address }}</small></h1>
+
+    <div class="table-responsive">
+        {% if beers|length > 0 %}
+            {% for batch in beers|batch(beers|length / 2) %}
+                <div class="col-lg-6">
+                    {% for beer in batch %}
+                        <div class="panel panel-default panel-info">
+                            <div class="panel-heading">
+                                <h4>{{ beer.name }}</h4>
+                            </div>
+                            <div class="panel-body">
+                                <em>{{ beer.category }}</em>
+                                <p>{{ beer.notes|nl2br }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
