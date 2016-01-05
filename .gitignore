@@ -23,6 +23,12 @@
 !bin/symfony_requirements
 /vendor/
 
+# Managed by Bower
+/bower_components/
+
+# Managed by Npm
+/node_modules/
+
 # Assets and user uploads
 /web/bundles/
 /web/uploads/
