@@ -12,10 +12,10 @@
         </service>
 
         <service id="app.command_handler.create_business_request"
-                 class="AppBundle\Command\CreateBusinessRequestCommandHandler">
+                 class="AppBundle\Command\BusinessRequest\CreateBusinessRequestCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\CreateBusinessRequestCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\BusinessRequest\CreateBusinessRequestCommand" />
         </service>
 
         <service id="app.command_handler.create_business_beer_category"
@@ -79,18 +79,18 @@
         </service>
 
         <service id="app.command_handler.delete_business_request"
-                 class="AppBundle\Command\DeleteBusinessRequestCommandHandler">
+                 class="AppBundle\Command\BusinessRequest\DeleteBusinessRequestCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessRequestCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\BusinessRequest\DeleteBusinessRequestCommand" />
         </service>
 
         <service id="app.command_handler.accept_business_request"
-                 class="AppBundle\Command\AcceptBusinessRequestCommandHandler">
+                 class="AppBundle\Command\BusinessRequest\AcceptBusinessRequestCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="command_bus" />
-            <tag name="command_handler" handles="AppBundle\Command\AcceptBusinessRequestCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\BusinessRequest\AcceptBusinessRequestCommand" />
         </service>
 
         <service id="app.validator.unique_business_beer_category"

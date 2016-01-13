@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AppBundle\Command\BusinessRequest;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use AppBundle\Validator\Constraints as AppBundleAssert;
@@ -71,7 +71,7 @@ class CreateBusinessRequestCommand
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = 1,
-     *      max = 255,
+     *      max = 6,
      *      minMessage = "bsn.request.zip_code_min",
      *      maxMessage = "bsn.request.zip_code_max"
      * )

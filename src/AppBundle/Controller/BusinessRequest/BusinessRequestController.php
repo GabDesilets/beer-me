@@ -2,9 +2,9 @@
 
 namespace AppBundle\Controller\BusinessRequest;
 
-use AppBundle\Command\AcceptBusinessRequestCommand;
-use AppBundle\Command\CreateBusinessRequestCommand;
-use AppBundle\Command\DeleteBusinessRequestCommand;
+use AppBundle\Command\BusinessRequest\AcceptBusinessRequestCommand;
+use AppBundle\Command\BusinessRequest\CreateBusinessRequestCommand;
+use AppBundle\Command\BusinessRequest\DeleteBusinessRequestCommand;
 use AppBundle\Form\BusinessRequestType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
