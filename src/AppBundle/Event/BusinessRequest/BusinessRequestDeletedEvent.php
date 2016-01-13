@@ -1,6 +1,8 @@
 <?php
 
-namespace AppBundle\Event;
+namespace AppBundle\Event\BusinessRequest;
+
+use AppBundle\Event\AbstractBusinessRequestEvent;
 
 /**
  * Event raised when a business is deleted
