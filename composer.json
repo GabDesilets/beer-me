@@ -28,7 +28,8 @@
         "jms/di-extra-bundle": "^1.6",
         "twig/extensions": "^1.3",
         "knplabs/knp-paginator-bundle": "^2.5",
-        "ircmaxell/random-lib": "^1.1"
+        "ircmaxell/random-lib": "^1.1",
+        "cocur/slugify": "^1.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

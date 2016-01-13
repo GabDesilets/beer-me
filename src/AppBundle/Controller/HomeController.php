@@ -34,15 +34,23 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/beers/{business_id}", name="user.beers")
+     * @Route("/beers/{business_id}-{business_slug}", name="user.beers")
+     * @Route("/beers/{business_id}", defaults={"business_slug" = ""})
      *
      * @param $business_id
+     * @param $business_slug
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function businessAction($business_id)
+    public function businessAction($business_id, $business_slug)
     {
         $business = $this->getDoctrine()->getRepository('AppBundle:Business')->find($business_id);
         $beers = $this->getDoctrine()->getRepository('AppBundle:BusinessBeer')->findBy(['business' => $business]);
+
+        // Redirect to the correct slug if an incorrect one is used
+        $realSlug = $this->get('slugify')->slugify($business->getName());
+        if ($business && $realSlug !== $business_slug) {
+            return $this->redirectToRoute('user.beers', ['business_id' => $business_id, 'business_slug' => $realSlug]);
+        }
 
         return $this->render(':home:business.html.twig', ['business' => $business, 'beers' => $beers]);
     }

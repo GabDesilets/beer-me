@@ -22,7 +22,7 @@
         <div class="col-lg-4">
             <ul class="list-unstyled">
                 {% for business in batch %}
-                    <li><a href="{{ path('user.beers', {'business_id': business.id}) }}">{{ business.name }}</a></li>
+                    <li><a href="{{ path('user.beers', {'business_id': business.id, 'business_slug': business.name|slugify}) }}">{{ business.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
