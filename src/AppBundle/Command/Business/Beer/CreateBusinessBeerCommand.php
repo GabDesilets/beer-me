@@ -1,26 +1,18 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AppBundle\Command\Business\Beer;
 
-use AppBundle\Entity\BusinessBeerCategory;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\BusinessBeerCategory;
 use AppBundle\Validator\Constraints as AppBundleAssert;
 
 /**
- * Command to edit an existing business beer
+ * Command to create a new business beer
  *
  * @AppBundleAssert\UniqueBusinessBeer()
  */
-class EditBusinessBeerCommand
+class CreateBusinessBeerCommand
 {
-    /**
-     * The identifier of the business beer
-     *
-     * @var integer
-     * @Assert\Type(type="integer")
-     */
-    public $id;
-
     /**
      * Beer category
      *

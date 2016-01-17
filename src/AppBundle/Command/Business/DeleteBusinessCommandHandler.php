@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AppBundle\Command\Business;
 
 use AppBundle\Event\BusinessDeletedEvent;
 use Doctrine\ORM\EntityManagerInterface;

@@ -2,10 +2,10 @@
 
 namespace AppBundle\Tests\Command;
 
-use AppBundle\Command\DeleteBusinessBeerCategoryCommand;
-use AppBundle\Command\DeleteBusinessBeerCategoryCommandHandler;
-use AppBundle\Command\DeleteBusinessBeerCommand;
-use AppBundle\Command\DeleteBusinessBeerCommandHandler;
+use AppBundle\Command\Business\Beer\Category\DeleteBusinessBeerCategoryCommand;
+use AppBundle\Command\Business\Beer\Category\DeleteBusinessBeerCategoryCommandHandler;
+use AppBundle\Command\Business\Beer\DeleteBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\DeleteBusinessBeerCommandHandler;
 use AppBundle\Entity\Business;
 use AppBundle\Entity\BusinessBeer;
 use AppBundle\Entity\BusinessBeerCategory;

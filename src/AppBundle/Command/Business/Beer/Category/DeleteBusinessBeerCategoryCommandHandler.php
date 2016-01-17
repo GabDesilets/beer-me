@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AppBundle\Command\Business\Beer\Category;
 
 use AppBundle\Event\BusinessBeerCategoryDeletedEvent;
 use AppBundle\Exception\BusinessBeerCategoryInUseException;
@@ -50,8 +50,7 @@ class DeleteBusinessBeerCategoryCommandHandler
                 $this->em->flush();
 
                 $this->recorder->record(new BusinessBeerCategoryDeletedEvent($category));
-            } catch (ForeignKeyConstraintViolationException $e)
-            {
+            } catch (ForeignKeyConstraintViolationException $e) {
                 throw new BusinessBeerCategoryInUseException('', 0, $e);
             }
         }

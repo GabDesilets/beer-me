@@ -2,7 +2,7 @@
 
 namespace AppBundle\Command\BusinessRequest;
 
-use AppBundle\Command\CreateBusinessCommand;
+use AppBundle\Command\Business\CreateBusinessCommand;
 use AppBundle\Event\BusinessRequest\BusinessRequestAcceptedEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use SimpleBus\Message\Bus\MessageBus;

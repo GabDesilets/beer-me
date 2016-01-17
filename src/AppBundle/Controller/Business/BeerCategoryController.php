@@ -2,9 +2,9 @@
 
 namespace AppBundle\Controller\Business;
 
-use AppBundle\Command\CreateBusinessBeerCategoryCommand;
-use AppBundle\Command\DeleteBusinessBeerCategoryCommand;
-use AppBundle\Command\EditBusinessBeerCategoryCommand;
+use AppBundle\Command\Business\Beer\Category\CreateBusinessBeerCategoryCommand;
+use AppBundle\Command\Business\Beer\Category\DeleteBusinessBeerCategoryCommand;
+use AppBundle\Command\Business\Beer\Category\EditBusinessBeerCategoryCommand;
 use AppBundle\Entity\BusinessBeerCategory;
 use AppBundle\Event\BusinessBeerCategoryCreatedEvent;
 use AppBundle\Exception\BusinessBeerCategoryInUseException;
@@ -59,7 +59,6 @@ class BeerCategoryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             /** @var BusinessBeerCategory $category */
             // Register a temporary event to catch the created business from the event raised
             $category = $this->get('app.event_promises')->delegate(

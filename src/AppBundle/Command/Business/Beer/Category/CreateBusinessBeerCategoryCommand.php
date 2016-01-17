@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AppBundle\Command\Business\Beer\Category;
 
 use AppBundle\Entity\Business;
 use Symfony\Component\Validator\Constraints as Assert;

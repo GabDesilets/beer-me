@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AppBundle\Command\Business;
 
 use AppBundle\Entity\Business;
 use AppBundle\Event\BusinessUpdatedEvent;

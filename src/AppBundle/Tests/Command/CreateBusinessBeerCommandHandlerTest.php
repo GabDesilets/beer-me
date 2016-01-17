@@ -2,8 +2,8 @@
 
 namespace AppBundle\Tests\Command;
 
-use AppBundle\Command\CreateBusinessBeerCommand;
-use AppBundle\Command\CreateBusinessBeerCommandHandler;
+use AppBundle\Command\Business\Beer\CreateBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\CreateBusinessBeerCommandHandler;
 use AppBundle\Entity\Business;
 use AppBundle\Entity\BusinessBeer;
 use AppBundle\Entity\BusinessBeerCategory;

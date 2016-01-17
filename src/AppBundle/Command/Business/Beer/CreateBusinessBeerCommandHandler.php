@@ -1,18 +1,18 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AppBundle\Command\Business\Beer;
 
-use AppBundle\Entity\BusinessBeerCategory;
-use AppBundle\Event\BusinessBeerCategoryCreatedEvent;
+use AppBundle\Entity\BusinessBeer;
+use AppBundle\Event\BusinessBeerCreatedEvent;
 use Doctrine\ORM\EntityManagerInterface;
 use SimpleBus\Message\Recorder\RecordsMessages;
 
 /**
- * Handler for the business beer category creation command
+ * Handler for the business beer creation command
  *
- * This handler adds the business beer category to the database and raise a BusinessBeerCategoryCreatedEvent
+ * This handler adds the business beer to the database and raise a BusinessBeerCreatedEvent
  */
-class CreateBusinessBeerCategoryCommandHandler
+class CreateBusinessBeerCommandHandler
 {
     /** @var EntityManagerInterface */
     private $em;
@@ -21,7 +21,7 @@ class CreateBusinessBeerCategoryCommandHandler
     private $recorder;
 
     /**
-     * CreateBusinessBeerCategoryCommandHandler constructor.
+     * CreateBusinessBeerCommandHandler constructor.
      *
      * @param RecordsMessages $recorder
      * @param EntityManagerInterface $em
@@ -35,20 +35,21 @@ class CreateBusinessBeerCategoryCommandHandler
     /**
      * Handle the command
      *
-     * @param CreateBusinessBeerCategoryCommand $command
+     * @param CreateBusinessBeerCommand $command
      */
-    public function handle(CreateBusinessBeerCategoryCommand $command)
+    public function handle(CreateBusinessBeerCommand $command)
     {
-        $category = new BusinessBeerCategory(
-            $command->business,
-            $command->name
+        $beer = new BusinessBeer(
+            $command->category,
+            $command->name,
+            $command->notes
         );
 
         // Here we make the assumption that the values where validated for uniqueness and everything will go fine.
         // If this is not the case, the business will throw exceptions.  Those are not handled here.
-        $this->em->persist($category);
+        $this->em->persist($beer);
         $this->em->flush();
 
-        $this->recorder->record(new BusinessBeerCategoryCreatedEvent($category));
+        $this->recorder->record(new BusinessBeerCreatedEvent($beer));
     }
 }

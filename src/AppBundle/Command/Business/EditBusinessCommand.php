@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Command;
+namespace AppBundle\Command\Business;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

@@ -2,8 +2,8 @@
 
 namespace AppBundle\Tests\Command;
 
-use AppBundle\Command\EditBusinessCommand;
-use AppBundle\Command\EditBusinessCommandHandler;
+use AppBundle\Command\Business\EditBusinessCommand;
+use AppBundle\Command\Business\EditBusinessCommandHandler;
 use AppBundle\Entity\Business;
 use AppBundle\Event\BusinessUpdatedEvent;
 use AppBundle\Exception\BusinessNotFoundException;

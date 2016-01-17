@@ -2,8 +2,8 @@
 
 namespace AppBundle\Tests\Command;
 
-use AppBundle\Command\EditBusinessBeerCategoryCommand;
-use AppBundle\Command\EditBusinessBeerCategoryCommandHandler;
+use AppBundle\Command\Business\Beer\Category\EditBusinessBeerCategoryCommand;
+use AppBundle\Command\Business\Beer\Category\EditBusinessBeerCategoryCommandHandler;
 use AppBundle\Entity\Business;
 use AppBundle\Entity\BusinessBeerCategory;
 use AppBundle\Event\BusinessBeerCategoryUpdatedEvent;

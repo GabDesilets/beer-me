@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller\Business;
 
-use AppBundle\Command\EditBusinessCommand;
+use AppBundle\Command\Business\EditBusinessCommand;
 use AppBundle\Form\BusinessType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

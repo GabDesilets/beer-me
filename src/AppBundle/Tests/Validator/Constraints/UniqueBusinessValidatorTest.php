@@ -2,8 +2,8 @@
 
 namespace AppBundle\Tests\Validator\Constraints;
 
-use AppBundle\Command\CreateBusinessCommand;
-use AppBundle\Command\EditBusinessCommand;
+use AppBundle\Command\Business\CreateBusinessCommand;
+use AppBundle\Command\Business\EditBusinessCommand;
 use AppBundle\Entity\Business;
 use AppBundle\Entity\User;
 use AppBundle\Validator\Constraints\UniqueBusiness;

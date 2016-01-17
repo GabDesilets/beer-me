@@ -5,10 +5,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="app.command_handler.create_business" class="AppBundle\Command\CreateBusinessCommandHandler">
+        <service id="app.command_handler.create_business"
+                 class="AppBundle\Command\Business\CreateBusinessCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\CreateBusinessCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\Business\CreateBusinessCommand" />
         </service>
 
         <service id="app.command_handler.create_business_request"
@@ -19,58 +20,62 @@
         </service>
 
         <service id="app.command_handler.create_business_beer_category"
-                 class="AppBundle\Command\CreateBusinessBeerCategoryCommandHandler">
+                 class="AppBundle\Command\Business\Beer\Category\CreateBusinessBeerCategoryCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\CreateBusinessBeerCategoryCommand" />
+            <tag name="command_handler"
+                 handles="AppBundle\Command\Business\Beer\Category\CreateBusinessBeerCategoryCommand" />
         </service>
 
         <service id="app.command_handler.create_business_beer"
-                 class="AppBundle\Command\CreateBusinessBeerCommandHandler">
+                 class="AppBundle\Command\Business\Beer\CreateBusinessBeerCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\CreateBusinessBeerCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\Business\Beer\CreateBusinessBeerCommand" />
         </service>
 
 
-        <service id="app.command_handler.edit_business" class="AppBundle\Command\EditBusinessCommandHandler">
+        <service id="app.command_handler.edit_business" class="AppBundle\Command\Business\EditBusinessCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\EditBusinessCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\Business\EditBusinessCommand" />
         </service>
 
         <service id="app.command_handler.edit_business_beer_category"
-                 class="AppBundle\Command\EditBusinessBeerCategoryCommandHandler">
+                 class="AppBundle\Command\Business\Beer\Category\EditBusinessBeerCategoryCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\EditBusinessBeerCategoryCommand" />
+            <tag name="command_handler"
+                 handles="AppBundle\Command\Business\Beer\CategoryEditBusinessBeerCategoryCommand" />
         </service>
 
         <service id="app.command_handler.edit_business_beer"
-                 class="AppBundle\Command\EditBusinessBeerCommandHandler">
+                 class="AppBundle\Command\Business\Beer\EditBusinessBeerCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\EditBusinessBeerCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\Business\Beer\EditBusinessBeerCommand" />
         </service>
 
-        <service id="app.command_handler.delete_business" class="AppBundle\Command\DeleteBusinessCommandHandler">
+        <service id="app.command_handler.delete_business"
+                 class="AppBundle\Command\Business\DeleteBusinessCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\Business\DeleteBusinessCommand" />
         </service>
 
         <service id="app.command_handler.delete_business_beer_category"
-                 class="AppBundle\Command\DeleteBusinessBeerCategoryCommandHandler">
+                 class="AppBundle\Command\Business\Beer\Category\DeleteBusinessBeerCategoryCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessBeerCategoryCommand" />
+            <tag name="command_handler"
+                 handles="AppBundle\Command\Business\Beer\Category\DeleteBusinessBeerCategoryCommand" />
         </service>
 
         <service id="app.command_handler.delete_business_beer"
-                 class="AppBundle\Command\DeleteBusinessBeerCommandHandler">
+                 class="AppBundle\Command\Business\Beer\DeleteBusinessBeerCommandHandler">
             <argument type="service" id="simple_bus.event_bus.public_event_recorder" />
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <tag name="command_handler" handles="AppBundle\Command\DeleteBusinessBeerCommand" />
+            <tag name="command_handler" handles="AppBundle\Command\Business\Beer\DeleteBusinessBeerCommand" />
         </service>
 
         <service id="app.validator.unique_business" class="AppBundle\Validator\Constraints\UniqueBusinessValidator">

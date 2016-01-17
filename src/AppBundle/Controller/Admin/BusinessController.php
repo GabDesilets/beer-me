@@ -2,9 +2,9 @@
 
 namespace AppBundle\Controller\Admin;
 
-use AppBundle\Command\CreateBusinessCommand;
-use AppBundle\Command\DeleteBusinessCommand;
-use AppBundle\Command\EditBusinessCommand;
+use AppBundle\Command\Business\CreateBusinessCommand;
+use AppBundle\Command\Business\DeleteBusinessCommand;
+use AppBundle\Command\Business\EditBusinessCommand;
 use AppBundle\Event\BusinessCreatedEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

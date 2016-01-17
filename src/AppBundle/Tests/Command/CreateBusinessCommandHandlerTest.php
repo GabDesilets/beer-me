@@ -2,8 +2,8 @@
 
 namespace AppBundle\Tests\Command;
 
-use AppBundle\Command\CreateBusinessCommand;
-use AppBundle\Command\CreateBusinessCommandHandler;
+use AppBundle\Command\Business\CreateBusinessCommand;
+use AppBundle\Command\Business\CreateBusinessCommandHandler;
 use AppBundle\Entity\Business;
 use AppBundle\Event\BusinessCreatedEvent;
 use Doctrine\ORM\EntityManagerInterface;

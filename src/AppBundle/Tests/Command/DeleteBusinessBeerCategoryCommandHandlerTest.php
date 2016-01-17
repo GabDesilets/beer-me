@@ -2,8 +2,8 @@
 
 namespace AppBundle\Tests\Command;
 
-use AppBundle\Command\DeleteBusinessBeerCategoryCommand;
-use AppBundle\Command\DeleteBusinessBeerCategoryCommandHandler;
+use AppBundle\Command\Business\Beer\Category\DeleteBusinessBeerCategoryCommand;
+use AppBundle\Command\Business\Beer\Category\DeleteBusinessBeerCategoryCommandHandler;
 use AppBundle\Entity\Business;
 use AppBundle\Entity\BusinessBeerCategory;
 use AppBundle\Event\BusinessBeerCategoryDeletedEvent;

@@ -2,10 +2,10 @@
 
 namespace AppBundle\Tests\Validator\Constraints;
 
-use AppBundle\Command\CreateBusinessBeerCategoryCommand;
-use AppBundle\Command\CreateBusinessBeerCommand;
-use AppBundle\Command\EditBusinessBeerCategoryCommand;
-use AppBundle\Command\EditBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\Category\CreateBusinessBeerCategoryCommand;
+use AppBundle\Command\Business\Beer\CreateBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\Category\EditBusinessBeerCategoryCommand;
+use AppBundle\Command\Business\Beer\EditBusinessBeerCommand;
 use AppBundle\Entity\Business;
 use AppBundle\Entity\BusinessBeer;
 use AppBundle\Entity\BusinessBeerCategory;

@@ -2,7 +2,7 @@
 
 namespace AppBundle\Validator\Constraints;
 
-use AppBundle\Command\EditBusinessCommand;
+use AppBundle\Command\Business\EditBusinessCommand;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;

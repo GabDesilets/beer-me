@@ -2,9 +2,9 @@
 
 namespace AppBundle\Controller\Business;
 
-use AppBundle\Command\CreateBusinessBeerCommand;
-use AppBundle\Command\DeleteBusinessBeerCommand;
-use AppBundle\Command\EditBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\CreateBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\DeleteBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\EditBusinessBeerCommand;
 use AppBundle\Entity\BusinessBeer;
 use AppBundle\Event\BusinessBeerCreatedEvent;
 use AppBundle\Form\BusinessBeerCategoryType;

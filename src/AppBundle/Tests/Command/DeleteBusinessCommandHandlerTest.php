@@ -2,8 +2,8 @@
 
 namespace AppBundle\Tests\Command;
 
-use AppBundle\Command\DeleteBusinessCommand;
-use AppBundle\Command\DeleteBusinessCommandHandler;
+use AppBundle\Command\Business\DeleteBusinessCommand;
+use AppBundle\Command\Business\DeleteBusinessCommandHandler;
 use AppBundle\Entity\Business;
 use AppBundle\Event\BusinessDeletedEvent;
 use Doctrine\Common\Persistence\ObjectRepository;

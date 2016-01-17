@@ -2,8 +2,8 @@
 
 namespace AppBundle\Validator\Constraints;
 
-use AppBundle\Command\CreateBusinessBeerCommand;
-use AppBundle\Command\EditBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\CreateBusinessBeerCommand;
+use AppBundle\Command\Business\Beer\EditBusinessBeerCommand;
 use AppBundle\Entity\Business;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Constraint;
